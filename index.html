@@ -1,205 +1,4 @@
-renderPasswordCard(entry) {
-                const decrypted = this.decrypt(entry.password, this.masterPassword);
-                const isVisible = this.visiblePasswords[entry.id];
-                
-                return `
-                    <div class="password-card">
-                        <div class="password-header">
-                            <div class="password-info">
-                                <h3 class="password-site">🔑 ${entry.site}</h3>
-                                ${entry.username ? `<p class="password-username">${entry.username}</p>` : ''}
-                            </div>
-                            <button class="btn-icon btn-delete" onclick="app.handleDeletePassword('${entry.id}', 'password')">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="3 6 5 6 21 6"/>
-                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-                                </svg>
-                            </button>
-                        </div>
-
-                        <div class="password-display">
-                            <div class="password-value">
-                                ${isVisible ? (decrypted || 'Errore decifratura') : '••••••••••••'}
-                            </div>
-                            <button class="btn-icon" onclick="app.togglePasswordVisibility('${entry.id}')">
-                                ${isVisible ? 
-                                    `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
-                                        <line x1="1" y1="1" x2="23" y2="23"/>
-                                    </svg>` :
-                                    `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                                        <circle cx="12" cy="12" r="3"/>
-                                    </svg>`
-                                }
-                            </button>
-                            <button class="btn-icon" onclick="app.copyToClipboard('${entry.password}')">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-                                </svg>
-                            </button>
-                        </div>
-
-                        ${entry.notes ? `<p class="password-notes">${entry.notes}</p>` : ''}
-                    </div>
-                `;
-            }
-
-            renderCardCard(entry) {
-                const decryptedNumber = this.decrypt(entry.cardNumber, this.masterPassword);
-                const decryptedCVV = this.decrypt(entry.cvv, this.masterPassword);
-                const isVisible = this.visiblePasswords[entry.id];
-                const maskedNumber = decryptedNumber ? '**** **** **** ' + decryptedNumber.slice(-4) : '****';
-                
-                return `
-                    <div class="password-card">
-                        <div class="password-header">
-                            <div class="password-info">
-                                <h3 class="password-site">💳 ${entry.cardHolder}</h3>
-                                <p class="password-username">${isVisible ? decryptedNumber : maskedNumber}</p>
-                            </div>
-                            <button class="btn-icon btn-delete" onclick="app.handleDeletePassword('${entry.id}', 'card')">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="3 6 5 6 21 6"/>
-                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-                                </svg>
-                            </button>
-                        </div>
-
-                        <div class="field-label">Scadenza</div>
-                        <div class="field-value">${entry.expiryDate || 'N/A'}</div>
-
-                        <div class="password-display">
-                            <div class="password-value">
-                                CVV: ${isVisible ? (decryptedCVV || '***') : '•••'}
-                            </div>
-                            <button class="btn-icon" onclick="app.togglePasswordVisibility('${entry.id}')">
-                                ${isVisible ? 
-                                    `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
-                                        <line x1="1" y1="1" x2="23" y2="23"/>
-                                    </svg>` :
-                                    `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                                        <circle cx="12" cy="12" r="3"/>
-                                    </svg>`
-                                }
-                            </button>
-                            <button class="btn-icon" onclick="app.copyToClipboard('${entry.cardNumber}')">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-                                </svg>
-                            </button>
-                        </div>
-
-                        ${entry.notes ? `<p class="password-notes">${entry.notes}</p>` : ''}
-                    </div>
-                `;
-            }
-
-            renderNoteCard(entry) {
-                const decryptedContent = this.decrypt(entry.content, this.masterPassword);
-                const isVisible = this.visiblePasswords[entry.id];
-                
-                return `
-                    <div class="password-card">
-                        <div class="password-header">
-                            <div class="password-info">
-                                <h3 class="password-site">📝 ${entry.title}</h3>
-                            </div>
-                            <button class="btn-icon btn-delete" onclick="app.handleDeletePassword('${entry.id}', 'note')">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="3 6 5 6 21 6"/>
-                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-                                </svg>
-                            </button>
-                        </div>
-
-                        <div class="password-display" style="display: block;">
-                            <div class="document-preview" style="white-space: pre-wrap;">
-                                ${isVisible ? (decryptedContent || 'Errore decifratura') : 'Clicca per visualizzare...'}
-                            </div>
-                        </div>
-
-                        <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem;">
-                            <button class="btn-icon" onclick="app.togglePasswordVisibility('${entry.id}')">
-                                ${isVisible ? 
-                                    `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
-                                        <line x1="1" y1="1" x2="23" y2="23"/>
-                                    </svg>` :
-                                    `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                                        <circle cx="12" cy="12" r="3"/>
-                                    </svg>`
-                                }
-                            </button>
-                            ${isVisible ? `
-                                <button class="btn-icon" onclick="app.copyToClipboard('${entry.content}')">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-                                    </svg>
-                                </button>
-                            ` : ''}
-                        </div>
-                    </div>
-                `;
-            }
-
-            renderDocumentCard(entry) {
-                const decryptedContent = this.decrypt(entry.content, this.masterPassword);
-                const isVisible = this.visiblePasswords[entry.id];
-                
-                return `
-                    <div class="password-card">
-                        <div class="password-header">
-                            <div class="password-info">
-                                <h3 class="password-site">📄 ${entry.title}</h3>
-                            </div>
-                            <button class="btn-icon btn-delete" onclick="app.handleDeletePassword('${entry.id}', 'document')">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="3 6 5 6 21 6"/>
-                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-                                </svg>
-                            </button>
-                        </div>
-
-                        <div class="password-display" style="display: block;">
-                            <div class="document-preview" style="white-space: pre-wrap;">
-                                ${isVisible ? (decryptedContent || 'Errore decifratura') : 'Clicca per visualizzare...'}
-                            </div>
-                        </div>
-
-                        ${entry.notes ? `<p class="password-notes" style="margin-top: 0.75rem;">${entry.notes}</p>` : ''}
-
-                        <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem;">
-                            <button class="btn-icon" onclick="app.togglePasswordVisibility('${entry.id}')">
-                                ${isVisible ? 
-                                    `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
-                                        <line x1="1" y1="1" x2="23" y2="23"/>
-                                    </svg>` :
-                                    `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                                        <circle cx="12" cy="12" r="3"/>
-                                    </svg>`
-                                }
-                            </button>
-                            ${isVisible ? `
-                                <button class="btn-icon" onclick="app.copyToClipboard('${entry.content}')">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-                                    </svg>
-                                </button>
-                            ` : ''}
-                        </div>
-                    </div>
-                `;
-            }<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -640,10 +439,8 @@ renderPasswordCard(entry) {
 
         .tabs {
             display: flex;
-            gap: 0.5rem;
+            gap: 1rem;
             margin-bottom: 1.5rem;
-            overflow-x: auto;
-            padding-bottom: 0.5rem;
         }
 
         .tab {
@@ -652,8 +449,6 @@ renderPasswordCard(entry) {
             color: #6B7280;
             border-bottom: 2px solid transparent;
             cursor: pointer;
-            white-space: nowrap;
-            flex-shrink: 0;
         }
 
         .tab.active {
@@ -661,32 +456,9 @@ renderPasswordCard(entry) {
             border-bottom-color: #4F46E5;
         }
 
-        .card-icon {
-            display: inline-block;
-            margin-right: 0.5rem;
-        }
-
-        .field-label {
-            font-size: 0.75rem;
-            color: #6B7280;
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .field-value {
-            font-size: 0.875rem;
-            color: #1F2937;
-            margin-bottom: 0.75rem;
-        }
-
-        .document-preview {
-            background: #F9FAFB;
-            border: 1px solid #E5E7EB;
-            border-radius: 0.5rem;
-            padding: 0.75rem;
-            margin-top: 0.5rem;
-            font-size: 0.875rem;
+        .loading {
+            text-align: center;
+            padding: 2rem;
             color: #6B7280;
         }
     </style>
@@ -719,25 +491,9 @@ renderPasswordCard(entry) {
                 this.currentUser = null;
                 this.masterPassword = '';
                 this.passwords = [];
-                this.cards = [];
-                this.notes = [];
-                this.documents = [];
-                this.currentCategory = 'passwords';
                 this.searchTerm = '';
                 this.showNewPassword = false;
-                this.newEntry = { 
-                    type: 'password',
-                    site: '', 
-                    username: '', 
-                    password: '', 
-                    notes: '',
-                    cardNumber: '',
-                    cardHolder: '',
-                    expiryDate: '',
-                    cvv: '',
-                    title: '',
-                    content: ''
-                };
+                this.newEntry = { site: '', username: '', password: '', notes: '' };
                 this.visiblePasswords = {};
                 this.error = '';
                 this.success = '';
@@ -768,9 +524,8 @@ renderPasswordCard(entry) {
                 try {
                     if (this.unsubscribe) this.unsubscribe();
                     
-                    // Carica passwords
                     const passwordsRef = collection(db, `users/${this.currentUser.uid}/passwords`);
-                    onSnapshot(passwordsRef, (snapshot) => {
+                    this.unsubscribe = onSnapshot(passwordsRef, (snapshot) => {
                         this.passwords = [];
                         snapshot.forEach((doc) => {
                             this.passwords.push({ id: doc.id, ...doc.data() });
@@ -778,42 +533,9 @@ renderPasswordCard(entry) {
                         this.passwords.sort((a, b) => b.createdAt - a.createdAt);
                         this.render();
                     });
-
-                    // Carica cards
-                    const cardsRef = collection(db, `users/${this.currentUser.uid}/cards`);
-                    onSnapshot(cardsRef, (snapshot) => {
-                        this.cards = [];
-                        snapshot.forEach((doc) => {
-                            this.cards.push({ id: doc.id, ...doc.data() });
-                        });
-                        this.cards.sort((a, b) => b.createdAt - a.createdAt);
-                        this.render();
-                    });
-
-                    // Carica notes
-                    const notesRef = collection(db, `users/${this.currentUser.uid}/notes`);
-                    onSnapshot(notesRef, (snapshot) => {
-                        this.notes = [];
-                        snapshot.forEach((doc) => {
-                            this.notes.push({ id: doc.id, ...doc.data() });
-                        });
-                        this.notes.sort((a, b) => b.createdAt - a.createdAt);
-                        this.render();
-                    });
-
-                    // Carica documents
-                    const documentsRef = collection(db, `users/${this.currentUser.uid}/documents`);
-                    onSnapshot(documentsRef, (snapshot) => {
-                        this.documents = [];
-                        snapshot.forEach((doc) => {
-                            this.documents.push({ id: doc.id, ...doc.data() });
-                        });
-                        this.documents.sort((a, b) => b.createdAt - a.createdAt);
-                        this.render();
-                    });
                 } catch (err) {
                     console.error('Errore caricamento:', err);
-                    this.showError('Errore caricamento dati');
+                    this.showError('Errore caricamento password');
                 }
             }
             
@@ -945,90 +667,40 @@ renderPasswordCard(entry) {
             }
 
             async handleAddPassword() {
+                if (!this.newEntry.site || !this.newEntry.password) {
+                    this.showError('Compila almeno sito e password');
+                    return;
+                }
+
                 if (!this.masterPassword) {
                     this.showError('Password principale non verificata');
                     return;
                 }
 
                 try {
-                    let encryptedEntry = { createdAt: Date.now() };
-                    let collectionName = '';
+                    const encryptedEntry = {
+                        site: this.newEntry.site,
+                        username: this.newEntry.username,
+                        password: this.encrypt(this.newEntry.password, this.masterPassword),
+                        notes: this.newEntry.notes,
+                        createdAt: Date.now()
+                    };
 
-                    if (this.newEntry.type === 'password') {
-                        if (!this.newEntry.site || !this.newEntry.password) {
-                            this.showError('Compila almeno sito e password');
-                            return;
-                        }
-                        encryptedEntry = {
-                            ...encryptedEntry,
-                            site: this.newEntry.site,
-                            username: this.newEntry.username,
-                            password: this.encrypt(this.newEntry.password, this.masterPassword),
-                            notes: this.newEntry.notes
-                        };
-                        collectionName = 'passwords';
-                    } else if (this.newEntry.type === 'card') {
-                        if (!this.newEntry.cardNumber || !this.newEntry.cardHolder) {
-                            this.showError('Compila almeno numero carta e intestatario');
-                            return;
-                        }
-                        encryptedEntry = {
-                            ...encryptedEntry,
-                            cardNumber: this.encrypt(this.newEntry.cardNumber, this.masterPassword),
-                            cardHolder: this.newEntry.cardHolder,
-                            expiryDate: this.newEntry.expiryDate,
-                            cvv: this.encrypt(this.newEntry.cvv, this.masterPassword),
-                            notes: this.newEntry.notes
-                        };
-                        collectionName = 'cards';
-                    } else if (this.newEntry.type === 'note') {
-                        if (!this.newEntry.title || !this.newEntry.content) {
-                            this.showError('Compila titolo e contenuto');
-                            return;
-                        }
-                        encryptedEntry = {
-                            ...encryptedEntry,
-                            title: this.newEntry.title,
-                            content: this.encrypt(this.newEntry.content, this.masterPassword)
-                        };
-                        collectionName = 'notes';
-                    } else if (this.newEntry.type === 'document') {
-                        if (!this.newEntry.title || !this.newEntry.content) {
-                            this.showError('Compila titolo e contenuto');
-                            return;
-                        }
-                        encryptedEntry = {
-                            ...encryptedEntry,
-                            title: this.newEntry.title,
-                            content: this.encrypt(this.newEntry.content, this.masterPassword),
-                            notes: this.newEntry.notes
-                        };
-                        collectionName = 'documents';
-                    }
-
-                    const newDocRef = doc(collection(db, `users/${this.currentUser.uid}/${collectionName}`));
+                    const newDocRef = doc(collection(db, `users/${this.currentUser.uid}/passwords`));
                     await setDoc(newDocRef, encryptedEntry);
 
-                    this.newEntry = { 
-                        type: 'password',
-                        site: '', username: '', password: '', notes: '',
-                        cardNumber: '', cardHolder: '', expiryDate: '', cvv: '',
-                        title: '', content: ''
-                    };
+                    this.newEntry = { site: '', username: '', password: '', notes: '' };
                     this.showNewPassword = false;
-                    this.showSuccess('Salvato con successo!');
+                    this.showSuccess('Password salvata!');
                 } catch (err) {
                     this.showError('Errore salvataggio: ' + err.message);
                 }
             }
             
-            async handleDeletePassword(id, type) {
+            async handleDeletePassword(id) {
                 try {
-                    const collectionName = type === 'password' ? 'passwords' : 
-                                          type === 'card' ? 'cards' :
-                                          type === 'note' ? 'notes' : 'documents';
-                    await deleteDoc(doc(db, `users/${this.currentUser.uid}/${collectionName}/${id}`));
-                    this.showSuccess('Eliminato con successo');
+                    await deleteDoc(doc(db, `users/${this.currentUser.uid}/passwords/${id}`));
+                    this.showSuccess('Password eliminata');
                 } catch (err) {
                     this.showError('Errore eliminazione');
                 }
@@ -1068,23 +740,10 @@ renderPasswordCard(entry) {
             }
             
             getFilteredPasswords() {
-                let items = [];
-                if (this.currentCategory === 'passwords') items = this.passwords;
-                else if (this.currentCategory === 'cards') items = this.cards;
-                else if (this.currentCategory === 'notes') items = this.notes;
-                else if (this.currentCategory === 'documents') items = this.documents;
-
-                return items.filter(item => {
-                    const searchLower = this.searchTerm.toLowerCase();
-                    if (this.currentCategory === 'passwords') {
-                        return item.site?.toLowerCase().includes(searchLower) ||
-                               item.username?.toLowerCase().includes(searchLower);
-                    } else if (this.currentCategory === 'cards') {
-                        return item.cardHolder?.toLowerCase().includes(searchLower);
-                    } else {
-                        return item.title?.toLowerCase().includes(searchLower);
-                    }
-                });
+                return this.passwords.filter(p =>
+                    p.site.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+                    (p.username && p.username.toLowerCase().includes(this.searchTerm.toLowerCase()))
+                );
             }
             
             renderAuthScreen() {
@@ -1186,8 +845,7 @@ renderPasswordCard(entry) {
             }
             
             renderMainScreen() {
-                const filteredItems = this.getFilteredPasswords();
-                const totalCount = this.passwords.length + this.cards.length + this.notes.length + this.documents.length;
+                const filteredPasswords = this.getFilteredPasswords();
                 
                 return `
                     <div class="container">
@@ -1198,7 +856,7 @@ renderPasswordCard(entry) {
                                         <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
                                         <path d="M7 11V7a5 5 0 0 1 9.9-1"/>
                                     </svg>
-                                    Il Tuo Vault
+                                    Le Tue Password
                                 </h1>
                                 <div class="header-buttons">
                                     <span class="sync-badge">☁️ Sincronizzato</span>
@@ -1210,21 +868,6 @@ renderPasswordCard(entry) {
 
                             ${this.success ? `<div class="alert alert-success">${this.success}</div>` : ''}
                             ${this.error ? `<div class="alert alert-error">${this.error}</div>` : ''}
-
-                            <div class="tabs">
-                                <button class="tab ${this.currentCategory === 'passwords' ? 'active' : ''}" onclick="app.switchCategory('passwords')">
-                                    🔑 Password (${this.passwords.length})
-                                </button>
-                                <button class="tab ${this.currentCategory === 'cards' ? 'active' : ''}" onclick="app.switchCategory('cards')">
-                                    💳 Carte (${this.cards.length})
-                                </button>
-                                <button class="tab ${this.currentCategory === 'notes' ? 'active' : ''}" onclick="app.switchCategory('notes')">
-                                    📝 Note (${this.notes.length})
-                                </button>
-                                <button class="tab ${this.currentCategory === 'documents' ? 'active' : ''}" onclick="app.switchCategory('documents')">
-                                    📄 Documenti (${this.documents.length})
-                                </button>
-                            </div>
 
                             <div class="search-container">
                                 <div class="search-wrapper">
@@ -1242,7 +885,7 @@ renderPasswordCard(entry) {
                                         <line x1="12" y1="5" x2="12" y2="19"/>
                                         <line x1="5" y1="12" x2="19" y2="12"/>
                                     </svg>
-                                    Nuovo
+                                    Nuova
                                 </button>
                             </div>
 
@@ -1250,16 +893,11 @@ renderPasswordCard(entry) {
                         </div>
 
                         <div>
-                            ${filteredItems.length === 0 ? 
+                            ${filteredPasswords.length === 0 ? 
                                 `<div class="empty-state">
-                                    ${totalCount === 0 ? 'Nessun elemento salvato. Aggiungi il primo!' : 'Nessun risultato trovato'}
+                                    ${this.passwords.length === 0 ? 'Nessuna password salvata. Aggiungi la tua prima password!' : 'Nessun risultato trovato'}
                                 </div>` :
-                                filteredItems.map(entry => {
-                                    if (this.currentCategory === 'passwords') return this.renderPasswordCard(entry);
-                                    if (this.currentCategory === 'cards') return this.renderCardCard(entry);
-                                    if (this.currentCategory === 'notes') return this.renderNoteCard(entry);
-                                    if (this.currentCategory === 'documents') return this.renderDocumentCard(entry);
-                                }).join('')
+                                filteredPasswords.map(entry => this.renderPasswordCard(entry)).join('')
                             }
                         </div>
                     </div>
@@ -1269,41 +907,11 @@ renderPasswordCard(entry) {
             renderNewPasswordForm() {
                 return `
                     <div class="form-box">
-                        <h3>Aggiungi Nuovo Elemento</h3>
-                        
-                        <select id="entryType" onchange="app.updateNewEntry('type', this.value)">
-                            <option value="password" ${this.newEntry.type === 'password' ? 'selected' : ''}>🔑 Password</option>
-                            <option value="card" ${this.newEntry.type === 'card' ? 'selected' : ''}>💳 Carta di Credito</option>
-                            <option value="note" ${this.newEntry.type === 'note' ? 'selected' : ''}>📝 Nota Privata</option>
-                            <option value="document" ${this.newEntry.type === 'document' ? 'selected' : ''}>📄 Documento</option>
-                        </select>
-
-                        ${this.newEntry.type === 'password' ? `
-                            <input type="text" placeholder="Sito (es. facebook.com)" value="${this.newEntry.site}" onkeyup="app.updateNewEntry('site', this.value)">
-                            <input type="text" placeholder="Username o Email" value="${this.newEntry.username}" onkeyup="app.updateNewEntry('username', this.value)">
-                            <input type="password" placeholder="Password" value="${this.newEntry.password}" onkeyup="app.updateNewEntry('password', this.value)">
-                            <textarea placeholder="Note (opzionale)" rows="2" onkeyup="app.updateNewEntry('notes', this.value)">${this.newEntry.notes}</textarea>
-                        ` : ''}
-
-                        ${this.newEntry.type === 'card' ? `
-                            <input type="text" placeholder="Numero Carta" value="${this.newEntry.cardNumber}" onkeyup="app.updateNewEntry('cardNumber', this.value)">
-                            <input type="text" placeholder="Intestatario" value="${this.newEntry.cardHolder}" onkeyup="app.updateNewEntry('cardHolder', this.value)">
-                            <input type="text" placeholder="Scadenza (MM/AA)" value="${this.newEntry.expiryDate}" onkeyup="app.updateNewEntry('expiryDate', this.value)">
-                            <input type="text" placeholder="CVV" value="${this.newEntry.cvv}" onkeyup="app.updateNewEntry('cvv', this.value)">
-                            <textarea placeholder="Note (opzionale)" rows="2" onkeyup="app.updateNewEntry('notes', this.value)">${this.newEntry.notes}</textarea>
-                        ` : ''}
-
-                        ${this.newEntry.type === 'note' ? `
-                            <input type="text" placeholder="Titolo" value="${this.newEntry.title}" onkeyup="app.updateNewEntry('title', this.value)">
-                            <textarea placeholder="Contenuto" rows="6" onkeyup="app.updateNewEntry('content', this.value)">${this.newEntry.content}</textarea>
-                        ` : ''}
-
-                        ${this.newEntry.type === 'document' ? `
-                            <input type="text" placeholder="Titolo" value="${this.newEntry.title}" onkeyup="app.updateNewEntry('title', this.value)">
-                            <textarea placeholder="Contenuto del documento" rows="6" onkeyup="app.updateNewEntry('content', this.value)">${this.newEntry.content}</textarea>
-                            <textarea placeholder="Note aggiuntive (opzionale)" rows="2" onkeyup="app.updateNewEntry('notes', this.value)">${this.newEntry.notes}</textarea>
-                        ` : ''}
-
+                        <h3>Aggiungi Password</h3>
+                        <input type="text" id="newSite" placeholder="Sito (es. facebook.com)" value="${this.newEntry.site}" onkeyup="app.updateNewEntry('site', this.value)">
+                        <input type="text" id="newUsername" placeholder="Username o Email" value="${this.newEntry.username}" onkeyup="app.updateNewEntry('username', this.value)">
+                        <input type="password" id="newPassword" placeholder="Password" value="${this.newEntry.password}" onkeyup="app.updateNewEntry('password', this.value)">
+                        <textarea id="newNotes" placeholder="Note (opzionale)" rows="2" onkeyup="app.updateNewEntry('notes', this.value)">${this.newEntry.notes}</textarea>
                         <div class="form-buttons">
                             <button class="btn-primary" onclick="app.handleAddPassword()">Salva</button>
                             <button class="btn-cancel" onclick="app.cancelNewPassword()">Annulla</button>
@@ -1452,12 +1060,7 @@ renderPasswordCard(entry) {
             
             cancelNewPassword() {
                 this.showNewPassword = false;
-                this.newEntry = { 
-                    type: 'password',
-                    site: '', username: '', password: '', notes: '',
-                    cardNumber: '', cardHolder: '', expiryDate: '', cvv: '',
-                    title: '', content: ''
-                };
+                this.newEntry = { site: '', username: '', password: '', notes: '' };
                 this.render();
             }
             
@@ -1468,15 +1071,6 @@ renderPasswordCard(entry) {
             
             updateNewEntry(field, value) {
                 this.newEntry[field] = value;
-                if (field === 'type') {
-                    this.render();
-                }
-            }
-
-            switchCategory(category) {
-                this.currentCategory = category;
-                this.searchTerm = '';
-                this.render();
             }
         }
 
