@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -10,1020 +11,1077 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #EFF6FF 0%, #E0E7FF 100%);
-            min-height: 100vh;
-        }
-        
+
+```
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(135deg, #EFF6FF 0%, #E0E7FF 100%);
+        min-height: 100vh;
+    }
+    
+    .container {
+        max-width: 56rem;
+        margin: 0 auto;
+        padding: 0.75rem;
+    }
+
+    @media (min-width: 640px) {
         .container {
-            max-width: 56rem;
-            margin: 0 auto;
             padding: 1rem;
         }
-        
-        .login-container {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-        }
-        
-        .login-box {
-            background: white;
-            border-radius: 1rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            padding: 2rem;
-            width: 100%;
-            max-width: 28rem;
-        }
-        
-        .lock-icon-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        .lock-icon-bg {
-            background: #E0E7FF;
-            padding: 1rem;
-            border-radius: 9999px;
-        }
-        
-        .lock-icon {
-            color: #4F46E5;
-        }
-        
-        h1 {
-            font-size: 1.875rem;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 0.5rem;
-            color: #1F2937;
-        }
-        
-        .subtitle {
-            text-align: center;
-            color: #6B7280;
-            margin-bottom: 2rem;
-        }
-        
-        .alert {
-            padding: 1rem;
-            border-radius: 0.5rem;
-            margin-bottom: 1rem;
-            border: 1px solid;
-        }
-        
-        .alert-error {
-            background: #FEF2F2;
-            border-color: #FECACA;
-            color: #991B1B;
-        }
-        
-        .alert-success {
-            background: #F0FDF4;
-            border-color: #BBF7D0;
-            color: #166534;
-        }
-        
-        .alert-info {
-            background: #EFF6FF;
-            border-color: #BFDBFE;
-            color: #1E40AF;
-        }
-        
-        input[type="text"],
-        input[type="password"],
-        input[type="email"],
-        textarea {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1px solid #D1D5DB;
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        input:focus,
-        textarea:focus {
-            outline: none;
-            border-color: #4F46E5;
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
-        }
-        
-        button {
-            cursor: pointer;
-            border: none;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            transition: all 0.2s;
-            font-size: 1rem;
-        }
-        
-        button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        
-        .btn-primary {
-            width: 100%;
-            background: #4F46E5;
-            color: white;
-            padding: 0.75rem 1rem;
-        }
-        
-        .btn-primary:hover:not(:disabled) {
-            background: #4338CA;
-        }
-        
+    }
+    
+    .login-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+    }
+    
+    .login-box {
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        padding: 2rem;
+        width: 100%;
+        max-width: 28rem;
+    }
+    
+    .lock-icon-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .lock-icon-bg {
+        background: #E0E7FF;
+        padding: 1rem;
+        border-radius: 9999px;
+    }
+    
+    .lock-icon {
+        color: #4F46E5;
+    }
+    
+    h1 {
+        font-size: 1.875rem;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 0.5rem;
+        color: #1F2937;
+    }
+    
+    .subtitle {
+        text-align: center;
+        color: #6B7280;
+        margin-bottom: 2rem;
+    }
+    
+    .alert {
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+        border: 1px solid;
+    }
+    
+    .alert-error {
+        background: #FEF2F2;
+        border-color: #FECACA;
+        color: #991B1B;
+    }
+    
+    .alert-success {
+        background: #F0FDF4;
+        border-color: #BBF7D0;
+        color: #166534;
+    }
+    
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    textarea {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 1px solid #D1D5DB;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    input:focus,
+    textarea:focus {
+        outline: none;
+        border-color: #4F46E5;
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    }
+    
+    button {
+        cursor: pointer;
+        border: none;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: all 0.2s;
+        font-size: 1rem;
+    }
+    
+    button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+    
+    .btn-primary {
+        width: 100%;
+        background: #4F46E5;
+        color: white;
+        padding: 0.75rem 1rem;
+    }
+    
+    .btn-primary:hover:not(:disabled) {
+        background: #4338CA;
+    }
+    
+    .btn-secondary {
+        background: #E5E7EB;
+        color: #374151;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.75rem;
+    }
+
+    @media (min-width: 640px) {
         .btn-secondary {
-            background: #E5E7EB;
-            color: #374151;
             padding: 0.5rem 1rem;
             font-size: 0.875rem;
         }
-        
-        .btn-secondary:hover {
-            background: #D1D5DB;
-        }
-        
-        .btn-link {
-            background: transparent;
-            color: #4F46E5;
-            text-decoration: underline;
-            padding: 0.5rem;
-        }
-        
-        .btn-add {
-            background: #4F46E5;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            white-space: nowrap;
-        }
-        
-        .btn-add:hover {
-            background: #4338CA;
-        }
-        
-        .btn-icon {
-            background: transparent;
-            padding: 0.5rem;
-            color: inherit;
-        }
-        
-        .btn-icon:hover {
-            background: #F3F4F6;
-            border-radius: 0.5rem;
-        }
-        
-        .btn-delete {
-            color: #EF4444;
-            padding: 0.5rem;
-        }
-        
-        .btn-delete:hover {
-            color: #DC2626;
-        }
-        
-        .note-box {
-            margin-top: 1.5rem;
-            padding: 1rem;
-            background: #EFF6FF;
-            border-radius: 0.5rem;
-        }
-        
-        .note-box strong {
-            font-weight: 600;
-        }
-        
-        .note-box p {
-            color: #374151;
-            font-size: 0.875rem;
-        }
-        
+    }
+    
+    .btn-secondary:hover {
+        background: #D1D5DB;
+    }
+    
+    .btn-link {
+        background: transparent;
+        color: #4F46E5;
+        text-decoration: underline;
+        padding: 0.5rem;
+    }
+    
+    .btn-add {
+        background: #4F46E5;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        white-space: nowrap;
+    }
+    
+    .btn-add:hover {
+        background: #4338CA;
+    }
+    
+    .btn-icon {
+        background: transparent;
+        padding: 0.5rem;
+        color: inherit;
+    }
+    
+    .btn-icon:hover {
+        background: #F3F4F6;
+        border-radius: 0.5rem;
+    }
+    
+    .btn-delete {
+        color: #EF4444;
+        padding: 0.5rem;
+    }
+    
+    .btn-delete:hover {
+        color: #DC2626;
+    }
+    
+    .note-box {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background: #EFF6FF;
+        border-radius: 0.5rem;
+    }
+    
+    .note-box strong {
+        font-weight: 600;
+    }
+    
+    .note-box p {
+        color: #374151;
+        font-size: 0.875rem;
+    }
+    
+    .card {
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    @media (min-width: 640px) {
         .card {
-            background: white;
-            border-radius: 1rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
             padding: 1.5rem;
-            margin-bottom: 1.5rem;
         }
-        
+    }
+    
+    .card-header {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .card-title {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #1F2937;
+    }
+    
+    .header-buttons {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    
+    .user-email {
+        color: #6B7280;
+        font-size: 0.75rem;
+        width: 100%;
+        word-break: break-all;
+        margin-bottom: 0.5rem;
+    }
+
+    .sync-badge {
+        background: #D1FAE5;
+        color: #065F46;
+        padding: 0.4rem 0.6rem;
+        border-radius: 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    @media (min-width: 768px) {
         .card-header {
-            display: flex;
+            flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
         }
-        
+
         .card-title {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
             font-size: 1.875rem;
-            font-weight: bold;
-            color: #1F2937;
+            gap: 0.75rem;
         }
-        
-        .header-buttons {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-        
-        .sync-badge {
-            background: #D1FAE5;
-            color: #065F46;
-            padding: 0.5rem 0.75rem;
-            border-radius: 0.5rem;
-            font-size: 0.875rem;
-        }
-        
+
         .user-email {
-            color: #6B7280;
-            font-size: 0.875rem;
+            width: auto;
             margin-right: 0.5rem;
+            font-size: 0.875rem;
+            margin-bottom: 0;
         }
-        
+
+        .header-buttons {
+            width: auto;
+        }
+
+        .sync-badge {
+            font-size: 0.875rem;
+        }
+    }
+    
+    .search-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    @media (min-width: 640px) {
         .search-container {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
+            flex-direction: row;
         }
+    }
+    
+    .search-wrapper {
+        flex: 1;
+        position: relative;
+    }
+    
+    .search-input {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        margin: 0;
+    }
+    
+    .form-box {
+        background: #EEF2FF;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-box h3 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #1F2937;
+    }
+    
+    .form-buttons {
+        display: flex;
+        gap: 0.75rem;
+    }
+    
+    .form-buttons button {
+        flex: 1;
+        padding: 0.5rem;
+    }
+    
+    .btn-cancel {
+        background: #D1D5DB;
+        color: #374151;
+    }
+    
+    .btn-cancel:hover {
+        background: #9CA3AF;
+    }
+    
+    .password-card {
+        background: white;
+        border-radius: 0.75rem;
+        padding: 1rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1rem;
+        transition: box-shadow 0.2s;
+    }
 
-        @media (min-width: 640px) {
-            .search-container {
-                flex-direction: row;
-            }
-        }
-        
-        .search-wrapper {
-            flex: 1;
-            position: relative;
-        }
-        
-        .search-input {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            margin: 0;
-        }
-        
-        .form-box {
-            background: #EEF2FF;
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-box h3 {
-            font-size: 1.125rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #1F2937;
-        }
-        
-        .form-buttons {
-            display: flex;
-            gap: 0.75rem;
-        }
-        
-        .form-buttons button {
-            flex: 1;
-            padding: 0.5rem;
-        }
-        
-        .btn-cancel {
-            background: #D1D5DB;
-            color: #374151;
-        }
-        
-        .btn-cancel:hover {
-            background: #9CA3AF;
-        }
-        
+    @media (min-width: 640px) {
         .password-card {
-            background: white;
-            border-radius: 0.75rem;
             padding: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            margin-bottom: 1rem;
-            transition: box-shadow 0.2s;
         }
-        
-        .password-card:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        
-        .password-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 0.75rem;
-        }
-        
-        .password-info {
-            flex: 1;
-        }
-        
-        .password-site {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: #1F2937;
-        }
-        
-        .password-username {
-            color: #6B7280;
-            margin-top: 0.25rem;
-        }
-        
-        .password-display {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.75rem;
-        }
-        
-        .password-value {
-            flex: 1;
-            background: #F3F4F6;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            font-family: monospace;
-            font-size: 0.875rem;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-        
-        .password-notes {
-            font-size: 0.875rem;
-            color: #6B7280;
-            background: #F9FAFB;
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-        }
-        
-        .empty-state {
-            background: white;
-            border-radius: 0.75rem;
-            padding: 2rem;
-            text-align: center;
-            color: #6B7280;
-        }
-        
-        svg {
-            display: inline-block;
-        }
+    }
+    
+    .password-card:hover {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .password-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 0.75rem;
+    }
+    
+    .password-info {
+        flex: 1;
+    }
+    
+    .password-site {
+        font-size: 1.125rem;
+        font-weight: bold;
+        color: #1F2937;
+        word-break: break-word;
+    }
+    
+    .password-username {
+        color: #6B7280;
+        margin-top: 0.25rem;
+        font-size: 0.875rem;
+        word-break: break-word;
+    }
+    
+    .password-display {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .password-value {
+        flex: 1;
+        background: #F3F4F6;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        font-family: monospace;
+        font-size: 0.875rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    .password-notes {
+        font-size: 0.875rem;
+        color: #6B7280;
+        background: #F9FAFB;
+        padding: 0.75rem;
+        border-radius: 0.5rem;
+    }
+    
+    .empty-state {
+        background: white;
+        border-radius: 0.75rem;
+        padding: 2rem;
+        text-align: center;
+        color: #6B7280;
+    }
+    
+    svg {
+        display: inline-block;
+    }
 
-        .tabs {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
+    .tabs {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
 
-        .tab {
-            padding: 0.5rem 1rem;
-            background: transparent;
-            color: #6B7280;
-            border-bottom: 2px solid transparent;
-            cursor: pointer;
-        }
+    .tab {
+        padding: 0.5rem 1rem;
+        background: transparent;
+        color: #6B7280;
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+    }
 
-        .tab.active {
-            color: #4F46E5;
-            border-bottom-color: #4F46E5;
-        }
+    .tab.active {
+        color: #4F46E5;
+        border-bottom-color: #4F46E5;
+    }
 
-        .loading {
-            text-align: center;
-            padding: 2rem;
-            color: #6B7280;
-        }
-    </style>
+    .loading {
+        text-align: center;
+        padding: 2rem;
+        color: #6B7280;
+    }
+</style>
+```
+
 </head>
 <body>
     <div id="root">
         <div class="loading">Caricamento...</div>
     </div>
 
-    <!-- Firebase SDK -->
-    <script type="module">
-        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
-        import { getFirestore, collection, doc, setDoc, getDoc, getDocs, deleteDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+```
+<script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+    import { getFirestore, collection, doc, setDoc, getDoc, deleteDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
-        // Firebase Configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyAv9kaVe238jqo7cqzr8xnsF1rhGXPrm54",
-            authDomain: "password-manager-ce3ce.firebaseapp.com",
-            projectId: "password-manager-ce3ce",
-            storageBucket: "password-manager-ce3ce.firebasestorage.app",
-            messagingSenderId: "585187150117",
-            appId: "1:585187150117:web:1587037bd118685db332cc"
-        };
+    const firebaseConfig = {
+        apiKey: "AIzaSyAv9kaVe238jqo7cqzr8xnsF1rhGXPrm54",
+        authDomain: "password-manager-ce3ce.firebaseapp.com",
+        projectId: "password-manager-ce3ce",
+        storageBucket: "password-manager-ce3ce.firebasestorage.app",
+        messagingSenderId: "585187150117",
+        appId: "1:585187150117:web:1587037bd118685db332cc"
+    };
 
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
 
-        class PasswordManager {
-            constructor() {
-                this.currentUser = null;
-                this.masterPassword = '';
-                this.passwords = [];
-                this.searchTerm = '';
-                this.showNewPassword = false;
-                this.newEntry = { site: '', username: '', password: '', notes: '' };
-                this.visiblePasswords = {};
-                this.error = '';
-                this.success = '';
-                this.loading = true;
-                this.showLogin = true;
-                this.loginEmail = '';
-                this.loginPassword = '';
-                this.unsubscribe = null;
-                
-                this.init();
-            }
+    class PasswordManager {
+        constructor() {
+            this.currentUser = null;
+            this.masterPassword = '';
+            this.passwords = [];
+            this.searchTerm = '';
+            this.showNewPassword = false;
+            this.newEntry = { site: '', username: '', password: '', notes: '' };
+            this.visiblePasswords = {};
+            this.error = '';
+            this.success = '';
+            this.loading = true;
+            this.showLogin = true;
+            this.loginEmail = '';
+            this.loginPassword = '';
+            this.unsubscribe = null;
             
-            async init() {
-                onAuthStateChanged(auth, (user) => {
-                    this.currentUser = user;
-                    this.loading = false;
-                    if (user) {
-                        this.loadPasswords();
-                    } else {
-                        this.render();
-                    }
-                });
-            }
-
-            async loadPasswords() {
-                if (!this.currentUser) return;
-
-                try {
-                    if (this.unsubscribe) this.unsubscribe();
-                    
-                    const passwordsRef = collection(db, `users/${this.currentUser.uid}/passwords`);
-                    this.unsubscribe = onSnapshot(passwordsRef, (snapshot) => {
-                        this.passwords = [];
-                        snapshot.forEach((doc) => {
-                            this.passwords.push({ id: doc.id, ...doc.data() });
-                        });
-                        this.passwords.sort((a, b) => b.createdAt - a.createdAt);
-                        this.render();
-                    });
-                } catch (err) {
-                    console.error('Errore caricamento:', err);
-                    this.showError('Errore caricamento password');
-                }
-            }
-            
-            async handleRegister() {
-                if (!this.loginEmail || !this.loginPassword) {
-                    this.showError('Compila email e password');
-                    return;
-                }
-                
-                if (this.loginPassword.length < 6) {
-                    this.showError('La password deve essere almeno 6 caratteri');
-                    return;
-                }
-
-                try {
-                    await createUserWithEmailAndPassword(auth, this.loginEmail, this.loginPassword);
-                    this.showSuccess('Account creato! Ora imposta la password principale');
-                } catch (err) {
-                    if (err.code === 'auth/email-already-in-use') {
-                        this.showError('Email già registrata. Usa il login!');
-                    } else {
-                        this.showError('Errore registrazione: ' + err.message);
-                    }
-                }
-            }
-
-            async handleLogin() {
-                if (!this.loginEmail || !this.loginPassword) {
-                    this.showError('Compila email e password');
-                    return;
-                }
-
-                try {
-                    await signInWithEmailAndPassword(auth, this.loginEmail, this.loginPassword);
-                    this.showSuccess('Login effettuato!');
-                } catch (err) {
-                    if (err.code === 'auth/invalid-credential') {
-                        this.showError('Email o password errati');
-                    } else {
-                        this.showError('Errore login: ' + err.message);
-                    }
-                }
-            }
-
-            async handleLogout() {
-                try {
-                    if (this.unsubscribe) this.unsubscribe();
-                    await signOut(auth);
-                    this.masterPassword = '';
-                    this.passwords = [];
-                    this.showSuccess('Logout effettuato');
-                } catch (err) {
-                    this.showError('Errore logout');
-                }
-            }
-
-            async checkMasterPassword() {
-                if (!this.currentUser) return false;
-                
-                try {
-                    const masterDoc = await getDoc(doc(db, `users/${this.currentUser.uid}/settings/master`));
-                    return masterDoc.exists();
-                } catch (err) {
-                    return false;
-                }
-            }
-
-            async setMasterPassword() {
-                if (!this.masterPassword || this.masterPassword.length < 8) {
-                    this.showError('La password principale deve essere almeno 8 caratteri');
-                    return;
-                }
-
-                try {
-                    const hash = await this.hashPassword(this.masterPassword);
-                    await setDoc(doc(db, `users/${this.currentUser.uid}/settings/master`), {
-                        hash: hash,
-                        createdAt: Date.now()
-                    });
-                    this.showSuccess('Password principale impostata!');
-                    this.render();
-                } catch (err) {
-                    this.showError('Errore salvataggio password principale');
-                }
-            }
-
-            async verifyMasterPassword() {
-                try {
-                    const masterDoc = await getDoc(doc(db, `users/${this.currentUser.uid}/settings/master`));
-                    if (!masterDoc.exists()) {
-                        this.showError('Password principale non trovata');
-                        return false;
-                    }
-
-                    const hash = await this.hashPassword(this.masterPassword);
-                    if (hash === masterDoc.data().hash) {
-                        return true;
-                    } else {
-                        this.showError('Password principale errata!');
-                        return false;
-                    }
-                } catch (err) {
-                    this.showError('Errore verifica password');
-                    return false;
-                }
-            }
-            
-            async hashPassword(password) {
-                const encoder = new TextEncoder();
-                const data = encoder.encode(password);
-                const hash = await crypto.subtle.digest('SHA-256', data);
-                return Array.from(new Uint8Array(hash))
-                    .map(b => b.toString(16).padStart(2, '0'))
-                    .join('');
-            }
-            
-            encrypt(text, key) {
-                return btoa(text + '::' + key);
-            }
-            
-            decrypt(encrypted, key) {
-                try {
-                    const decoded = atob(encrypted);
-                    const parts = decoded.split('::');
-                    return parts[1] === key ? parts[0] : null;
-                } catch {
-                    return null;
-                }
-            }
-
-            async handleAddPassword() {
-                if (!this.newEntry.site || !this.newEntry.password) {
-                    this.showError('Compila almeno sito e password');
-                    return;
-                }
-
-                if (!this.masterPassword) {
-                    this.showError('Password principale non verificata');
-                    return;
-                }
-
-                try {
-                    const encryptedEntry = {
-                        site: this.newEntry.site,
-                        username: this.newEntry.username,
-                        password: this.encrypt(this.newEntry.password, this.masterPassword),
-                        notes: this.newEntry.notes,
-                        createdAt: Date.now()
-                    };
-
-                    const newDocRef = doc(collection(db, `users/${this.currentUser.uid}/passwords`));
-                    await setDoc(newDocRef, encryptedEntry);
-
-                    this.newEntry = { site: '', username: '', password: '', notes: '' };
-                    this.showNewPassword = false;
-                    this.showSuccess('Password salvata!');
-                } catch (err) {
-                    this.showError('Errore salvataggio: ' + err.message);
-                }
-            }
-            
-            async handleDeletePassword(id) {
-                try {
-                    await deleteDoc(doc(db, `users/${this.currentUser.uid}/passwords/${id}`));
-                    this.showSuccess('Password eliminata');
-                } catch (err) {
-                    this.showError('Errore eliminazione');
-                }
-            }
-            
-            copyToClipboard(text) {
-                const decrypted = this.decrypt(text, this.masterPassword);
-                if (decrypted) {
-                    navigator.clipboard.writeText(decrypted);
-                    this.showSuccess('Copiato!');
+            this.init();
+        }
+        
+        async init() {
+            onAuthStateChanged(auth, (user) => {
+                this.currentUser = user;
+                this.loading = false;
+                if (user) {
+                    this.loadPasswords();
                 } else {
-                    this.showError('Impossibile decifrare');
-                }
-            }
-            
-            togglePasswordVisibility(id) {
-                this.visiblePasswords[id] = !this.visiblePasswords[id];
-                this.render();
-            }
-            
-            showError(message) {
-                this.error = message;
-                this.render();
-                setTimeout(() => {
-                    this.error = '';
                     this.render();
-                }, 3000);
-            }
-            
-            showSuccess(message) {
-                this.success = message;
-                this.render();
-                setTimeout(() => {
-                    this.success = '';
+                }
+            });
+        }
+
+        async loadPasswords() {
+            if (!this.currentUser) return;
+
+            try {
+                if (this.unsubscribe) this.unsubscribe();
+                
+                const passwordsRef = collection(db, `users/${this.currentUser.uid}/passwords`);
+                this.unsubscribe = onSnapshot(passwordsRef, (snapshot) => {
+                    this.passwords = [];
+                    snapshot.forEach((doc) => {
+                        this.passwords.push({ id: doc.id, ...doc.data() });
+                    });
+                    this.passwords.sort((a, b) => b.createdAt - a.createdAt);
                     this.render();
-                }, 2000);
+                });
+            } catch (err) {
+                console.error('Errore caricamento:', err);
+                this.showError('Errore caricamento password');
+            }
+        }
+        
+        async handleRegister() {
+            if (!this.loginEmail || !this.loginPassword) {
+                this.showError('Compila email e password');
+                return;
             }
             
-            getFilteredPasswords() {
-                return this.passwords.filter(p =>
-                    p.site.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-                    (p.username && p.username.toLowerCase().includes(this.searchTerm.toLowerCase()))
-                );
-            }
-            
-            renderAuthScreen() {
-                return `
-                    <div class="login-container">
-                        <div class="login-box">
-                            <div class="lock-icon-container">
-                                <div class="lock-icon-bg">
-                                    <svg class="lock-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            
-                            <h1>Password Manager</h1>
-                            <p class="subtitle">
-                                ${this.showLogin ? 'Accedi al tuo account' : 'Crea un nuovo account'}
-                            </p>
-
-                            <div class="tabs">
-                                <button class="tab ${this.showLogin ? 'active' : ''}" onclick="app.toggleAuthMode(true)">Login</button>
-                                <button class="tab ${!this.showLogin ? 'active' : ''}" onclick="app.toggleAuthMode(false)">Registrati</button>
-                            </div>
-
-                            ${this.error ? `<div class="alert alert-error">${this.error}</div>` : ''}
-                            ${this.success ? `<div class="alert alert-success">${this.success}</div>` : ''}
-
-                            <input
-                                type="email"
-                                id="emailInput"
-                                placeholder="Email"
-                                value="${this.loginEmail}"
-                            />
-
-                            <input
-                                type="password"
-                                id="passwordInput"
-                                placeholder="Password (min 6 caratteri)"
-                            />
-
-                            <button class="btn-primary" onclick="app.${this.showLogin ? 'handleLogin' : 'handleRegister'}()">
-                                ${this.showLogin ? 'Accedi' : 'Crea Account'}
-                            </button>
-
-                            ${!this.showLogin ? `
-                                <div class="note-box">
-                                    <p><strong>Nota:</strong> Dopo la registrazione ti verrà chiesto di impostare una password principale per cifrare le tue password.</p>
-                                </div>
-                            ` : ''}
-                        </div>
-                    </div>
-                `;
+            if (this.loginPassword.length < 6) {
+                this.showError('La password deve essere almeno 6 caratteri');
+                return;
             }
 
-            async renderMasterPasswordScreen() {
-                const hasMaster = await this.checkMasterPassword();
-                
-                return `
-                    <div class="login-container">
-                        <div class="login-box">
-                            <div class="lock-icon-container">
-                                <div class="lock-icon-bg">
-                                    <svg class="lock-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            
-                            <h1>Password Principale</h1>
-                            <p class="subtitle">
-                                ${hasMaster ? 'Inserisci la password principale per decifrare le tue password' : 'Imposta una password principale per cifrare le tue password'}
-                            </p>
-
-                            ${this.error ? `<div class="alert alert-error">${this.error}</div>` : ''}
-                            ${this.success ? `<div class="alert alert-success">${this.success}</div>` : ''}
-
-                            <input
-                                type="password"
-                                id="masterPasswordInput"
-                                placeholder="Password principale (min 8 caratteri)"
-                            />
-
-                            <button class="btn-primary" onclick="app.${hasMaster ? 'verifyAndUnlock' : 'setMasterPassword'}()">
-                                ${hasMaster ? 'Sblocca' : 'Imposta Password'}
-                            </button>
-
-                            <button class="btn-link" onclick="app.handleLogout()">
-                                Esci dall'account
-                            </button>
-
-                            <div class="note-box">
-                                <p><strong>Importante:</strong> La password principale non può essere recuperata. Assicurati di ricordarla!</p>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }
-            
-            renderMainScreen() {
-                const filteredPasswords = this.getFilteredPasswords();
-                
-                return `
-                    <div class="container">
-                        <div class="card">
-                            <div class="card-header">
-                                <h1 class="card-title">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                                        <path d="M7 11V7a5 5 0 0 1 9.9-1"/>
-                                    </svg>
-                                    Le Tue Password
-                                </h1>
-                                <div class="header-buttons">
-                                    <span class="sync-badge">☁️ Sincronizzato</span>
-                                    <span class="user-email">${this.currentUser.email}</span>
-                                    <button class="btn-secondary" onclick="app.lock()">Blocca</button>
-                                    <button class="btn-secondary" onclick="app.handleLogout()">Esci</button>
-                                </div>
-                            </div>
-
-                            ${this.success ? `<div class="alert alert-success">${this.success}</div>` : ''}
-                            ${this.error ? `<div class="alert alert-error">${this.error}</div>` : ''}
-
-                            <div class="search-container">
-                                <div class="search-wrapper">
-                                    <input
-                                        type="text"
-                                        class="search-input"
-                                        id="searchInput"
-                                        placeholder="Cerca..."
-                                        value="${this.searchTerm}"
-                                        onkeyup="app.updateSearch(this.value)"
-                                    />
-                                </div>
-                                <button class="btn-add" onclick="app.toggleNewPassword()">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <line x1="12" y1="5" x2="12" y2="19"/>
-                                        <line x1="5" y1="12" x2="19" y2="12"/>
-                                    </svg>
-                                    Nuova
-                                </button>
-                            </div>
-
-                            ${this.showNewPassword ? this.renderNewPasswordForm() : ''}
-                        </div>
-
-                        <div>
-                            ${filteredPasswords.length === 0 ? 
-                                `<div class="empty-state">
-                                    ${this.passwords.length === 0 ? 'Nessuna password salvata. Aggiungi la tua prima password!' : 'Nessun risultato trovato'}
-                                </div>` :
-                                filteredPasswords.map(entry => this.renderPasswordCard(entry)).join('')
-                            }
-                        </div>
-                    </div>
-                `;
-            }
-            
-            renderNewPasswordForm() {
-                return `
-                    <div class="form-box">
-                        <h3>Aggiungi Password</h3>
-                        <input type="text" id="newSite" placeholder="Sito (es. facebook.com)" value="${this.newEntry.site}" onkeyup="app.updateNewEntry('site', this.value)">
-                        <input type="text" id="newUsername" placeholder="Username o Email" value="${this.newEntry.username}" onkeyup="app.updateNewEntry('username', this.value)">
-                        <input type="password" id="newPassword" placeholder="Password" value="${this.newEntry.password}" onkeyup="app.updateNewEntry('password', this.value)">
-                        <textarea id="newNotes" placeholder="Note (opzionale)" rows="2" onkeyup="app.updateNewEntry('notes', this.value)">${this.newEntry.notes}</textarea>
-                        <div class="form-buttons">
-                            <button class="btn-primary" onclick="app.handleAddPassword()">Salva</button>
-                            <button class="btn-cancel" onclick="app.cancelNewPassword()">Annulla</button>
-                        </div>
-                    </div>
-                `;
-            }
-            
-            renderPasswordCard(entry) {
-                const decrypted = this.decrypt(entry.password, this.masterPassword);
-                const isVisible = this.visiblePasswords[entry.id];
-                
-                return `
-                    <div class="password-card">
-                        <div class="password-header">
-                            <div class="password-info">
-                                <h3 class="password-site">${entry.site}</h3>
-                                ${entry.username ? `<p class="password-username">${entry.username}</p>` : ''}
-                            </div>
-                            <button class="btn-icon btn-delete" onclick="app.handleDeletePassword('${entry.id}')">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="3 6 5 6 21 6"/>
-                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-                                </svg>
-                            </button>
-                        </div>
-
-                        <div class="password-display">
-                            <div class="password-value">
-                                ${isVisible ? (decrypted || 'Errore decifratura') : '••••••••••••'}
-                            </div>
-                            <button class="btn-icon" onclick="app.togglePasswordVisibility('${entry.id}')">
-                                ${isVisible ? 
-                                    `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
-                                        <line x1="1" y1="1" x2="23" y2="23"/>
-                                    </svg>` :
-                                    `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                                        <circle cx="12" cy="12" r="3"/>
-                                    </svg>`
-                                }
-                            </button>
-                            <button class="btn-icon" onclick="app.copyToClipboard('${entry.password}')">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-                                </svg>
-                            </button>
-                        </div>
-
-                        ${entry.notes ? `<p class="password-notes">${entry.notes}</p>` : ''}
-                    </div>
-                `;
-            }
-            
-            async render() {
-                const root = document.getElementById('root');
-                
-                if (this.loading) {
-                    root.innerHTML = '<div class="loading">Caricamento...</div>';
-                    return;
+            try {
+                await createUserWithEmailAndPassword(auth, this.loginEmail, this.loginPassword);
+                this.showSuccess('Account creato! Ora imposta la password principale');
+            } catch (err) {
+                if (err.code === 'auth/email-already-in-use') {
+                    this.showError('Email già registrata. Usa il login!');
+                } else {
+                    this.showError('Errore registrazione: ' + err.message);
                 }
-                
-                if (!this.currentUser) {
-                    root.innerHTML = this.renderAuthScreen();
-                    this.setupAuthListeners();
-                    return;
-                }
-                
-                if (!this.masterPassword) {
-                    root.innerHTML = await this.renderMasterPasswordScreen();
-                    this.setupMasterPasswordListener();
-                    return;
-                }
-                
-                root.innerHTML = this.renderMainScreen();
-            }
-            
-            setupAuthListeners() {
-                const emailInput = document.getElementById('emailInput');
-                const passwordInput = document.getElementById('passwordInput');
-                
-                if (emailInput) {
-                    emailInput.addEventListener('input', (e) => {
-                        this.loginEmail = e.target.value;
-                    });
-                }
-                
-                if (passwordInput) {
-                    passwordInput.addEventListener('input', (e) => {
-                        this.loginPassword = e.target.value;
-                    });
-                    passwordInput.addEventListener('keypress', (e) => {
-                        if (e.key === 'Enter') {
-                            this.showLogin ? this.handleLogin() : this.handleRegister();
-                        }
-                    });
-                }
-            }
-
-            setupMasterPasswordListener() {
-                const input = document.getElementById('masterPasswordInput');
-                if (input) {
-                    input.addEventListener('input', (e) => {
-                        this.masterPassword = e.target.value;
-                    });
-                    input.addEventListener('keypress', async (e) => {
-                        if (e.key === 'Enter') {
-                            const hasMaster = await this.checkMasterPassword();
-                            if (hasMaster) {
-                                await this.verifyAndUnlock();
-                            } else {
-                                await this.setMasterPassword();
-                            }
-                        }
-                    });
-                }
-            }
-
-            async verifyAndUnlock() {
-                const isValid = await this.verifyMasterPassword();
-                if (isValid) {
-                    this.showSuccess('Sbloccato!');
-                    await this.loadPasswords();
-                }
-            }
-            
-            lock() {
-                this.masterPassword = '';
-                this.visiblePasswords = {};
-                this.render();
-            }
-            
-            toggleAuthMode(isLogin) {
-                this.showLogin = isLogin;
-                this.error = '';
-                this.success = '';
-                this.render();
-            }
-            
-            toggleNewPassword() {
-                this.showNewPassword = !this.showNewPassword;
-                this.render();
-            }
-            
-            cancelNewPassword() {
-                this.showNewPassword = false;
-                this.newEntry = { site: '', username: '', password: '', notes: '' };
-                this.render();
-            }
-            
-            updateSearch(value) {
-                this.searchTerm = value;
-                this.render();
-            }
-            
-            updateNewEntry(field, value) {
-                this.newEntry[field] = value;
             }
         }
 
-        // Avvia l'applicazione
-        window.app = new PasswordManager();
-    </script>
+        async handleLogin() {
+            if (!this.loginEmail || !this.loginPassword) {
+                this.showError('Compila email e password');
+                return;
+            }
+
+            try {
+                await signInWithEmailAndPassword(auth, this.loginEmail, this.loginPassword);
+                this.showSuccess('Login effettuato!');
+            } catch (err) {
+                if (err.code === 'auth/invalid-credential') {
+                    this.showError('Email o password errati');
+                } else {
+                    this.showError('Errore login: ' + err.message);
+                }
+            }
+        }
+
+        async handleLogout() {
+            try {
+                if (this.unsubscribe) this.unsubscribe();
+                await signOut(auth);
+                this.masterPassword = '';
+                this.passwords = [];
+                this.showSuccess('Logout effettuato');
+            } catch (err) {
+                this.showError('Errore logout');
+            }
+        }
+
+        async checkMasterPassword() {
+            if (!this.currentUser) return false;
+            
+            try {
+                const masterDoc = await getDoc(doc(db, `users/${this.currentUser.uid}/settings/master`));
+                return masterDoc.exists();
+            } catch (err) {
+                return false;
+            }
+        }
+
+        async setMasterPassword() {
+            if (!this.masterPassword || this.masterPassword.length < 8) {
+                this.showError('La password principale deve essere almeno 8 caratteri');
+                return;
+            }
+
+            try {
+                const hash = await this.hashPassword(this.masterPassword);
+                await setDoc(doc(db, `users/${this.currentUser.uid}/settings/master`), {
+                    hash: hash,
+                    createdAt: Date.now()
+                });
+                this.showSuccess('Password principale impostata!');
+                this.render();
+            } catch (err) {
+                this.showError('Errore salvataggio password principale');
+            }
+        }
+
+        async verifyMasterPassword() {
+            try {
+                const masterDoc = await getDoc(doc(db, `users/${this.currentUser.uid}/settings/master`));
+                if (!masterDoc.exists()) {
+                    this.showError('Password principale non trovata');
+                    return false;
+                }
+
+                const hash = await this.hashPassword(this.masterPassword);
+                if (hash === masterDoc.data().hash) {
+                    return true;
+                } else {
+                    this.showError('Password principale errata!');
+                    return false;
+                }
+            } catch (err) {
+                this.showError('Errore verifica password');
+                return false;
+            }
+        }
+        
+        async hashPassword(password) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(password);
+            const hash = await crypto.subtle.digest('SHA-256', data);
+            return Array.from(new Uint8Array(hash))
+                .map(b => b.toString(16).padStart(2, '0'))
+                .join('');
+        }
+        
+        encrypt(text, key) {
+            return btoa(text + '::' + key);
+        }
+        
+        decrypt(encrypted, key) {
+            try {
+                const decoded = atob(encrypted);
+                const parts = decoded.split('::');
+                return parts[1] === key ? parts[0] : null;
+            } catch {
+                return null;
+            }
+        }
+
+        async handleAddPassword() {
+            if (!this.newEntry.site || !this.newEntry.password) {
+                this.showError('Compila almeno sito e password');
+                return;
+            }
+
+            if (!this.masterPassword) {
+                this.showError('Password principale non verificata');
+                return;
+            }
+
+            try {
+                const encryptedEntry = {
+                    site: this.newEntry.site,
+                    username: this.newEntry.username,
+                    password: this.encrypt(this.newEntry.password, this.masterPassword),
+                    notes: this.newEntry.notes,
+                    createdAt: Date.now()
+                };
+
+                const newDocRef = doc(collection(db, `users/${this.currentUser.uid}/passwords`));
+                await setDoc(newDocRef, encryptedEntry);
+
+                this.newEntry = { site: '', username: '', password: '', notes: '' };
+                this.showNewPassword = false;
+                this.showSuccess('Password salvata!');
+            } catch (err) {
+                this.showError('Errore salvataggio: ' + err.message);
+            }
+        }
+        
+        async handleDeletePassword(id) {
+            try {
+                await deleteDoc(doc(db, `users/${this.currentUser.uid}/passwords/${id}`));
+                this.showSuccess('Password eliminata');
+            } catch (err) {
+                this.showError('Errore eliminazione');
+            }
+        }
+        
+        copyToClipboard(text) {
+            const decrypted = this.decrypt(text, this.masterPassword);
+            if (decrypted) {
+                navigator.clipboard.writeText(decrypted);
+                this.showSuccess('Copiato!');
+            } else {
+                this.showError('Impossibile decifrare');
+            }
+        }
+        
+        togglePasswordVisibility(id) {
+            this.visiblePasswords[id] = !this.visiblePasswords[id];
+            this.render();
+        }
+        
+        showError(message) {
+            this.error = message;
+            this.render();
+            setTimeout(() => {
+                this.error = '';
+                this.render();
+            }, 3000);
+        }
+        
+        showSuccess(message) {
+            this.success = message;
+            this.render();
+            setTimeout(() => {
+                this.success = '';
+                this.render();
+            }, 2000);
+        }
+        
+        getFilteredPasswords() {
+            return this.passwords.filter(p =>
+                p.site.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+                (p.username && p.username.toLowerCase().includes(this.searchTerm.toLowerCase()))
+            );
+        }
+        
+        renderAuthScreen() {
+            return `
+                <div class="login-container">
+                    <div class="login-box">
+                        <div class="lock-icon-container">
+                            <div class="lock-icon-bg">
+                                <svg class="lock-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <h1>Password Manager</h1>
+                        <p class="subtitle">
+                            ${this.showLogin ? 'Accedi al tuo account' : 'Crea un nuovo account'}
+                        </p>
+
+                        <div class="tabs">
+                            <button class="tab ${this.showLogin ? 'active' : ''}" onclick="app.toggleAuthMode(true)">Login</button>
+                            <button class="tab ${!this.showLogin ? 'active' : ''}" onclick="app.toggleAuthMode(false)">Registrati</button>
+                        </div>
+
+                        ${this.error ? `<div class="alert alert-error">${this.error}</div>` : ''}
+                        ${this.success ? `<div class="alert alert-success">${this.success}</div>` : ''}
+
+                        <input
+                            type="email"
+                            id="emailInput"
+                            placeholder="Email"
+                            value="${this.loginEmail}"
+                        />
+
+                        <input
+                            type="password"
+                            id="passwordInput"
+                            placeholder="Password (min 6 caratteri)"
+                        />
+
+                        <button class="btn-primary" onclick="app.${this.showLogin ? 'handleLogin' : 'handleRegister'}()">
+                            ${this.showLogin ? 'Accedi' : 'Crea Account'}
+                        </button>
+
+                        ${!this.showLogin ? `
+                            <div class="note-box">
+                                <p><strong>Nota:</strong> Dopo la registrazione ti verrà chiesto di impostare una password principale per cifrare le tue password.</p>
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        async renderMasterPasswordScreen() {
+            const hasMaster = await this.checkMasterPassword();
+            
+            return `
+                <div class="login-container">
+                    <div class="login-box">
+                        <div class="lock-icon-container">
+                            <div class="lock-icon-bg">
+                                <svg class="lock-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <h1>Password Principale</h1>
+                        <p class="subtitle">
+                            ${hasMaster ? 'Inserisci la password principale per decifrare le tue password' : 'Imposta una password principale per cifrare le tue password'}
+                        </p>
+
+                        ${this.error ? `<div class="alert alert-error">${this.error}</div>` : ''}
+                        ${this.success ? `<div class="alert alert-success">${this.success}</div>` : ''}
+
+                        <input
+                            type="password"
+                            id="masterPasswordInput"
+                            placeholder="Password principale (min 8 caratteri)"
+                        />
+
+                        <button class="btn-primary" onclick="app.${hasMaster ? 'verifyAndUnlock' : 'setMasterPassword'}()">
+                            ${hasMaster ? 'Sblocca' : 'Imposta Password'}
+                        </button>
+
+                        <button class="btn-link" onclick="app.handleLogout()">
+                            Esci dall'account
+                        </button>
+
+                        <div class="note-box">
+                            <p><strong>Importante:</strong> La password principale non può essere recuperata. Assicurati di ricordarla!</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        renderMainScreen() {
+            const filteredPasswords = this.getFilteredPasswords();
+            
+            return `
+                <div class="container">
+                    <div class="card">
+                        <div class="card-header">
+                            <h1 class="card-title">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                    <path d="M7 11V7a5 5 0 0 1 9.9-1"/>
+                                </svg>
+                                Le Tue Password
+                            </h1>
+                            <div class="header-buttons">
+                                <span class="sync-badge">☁️ Sincronizzato</span>
+                                <span class="user-email">${this.currentUser.email}</span>
+                                <button class="btn-secondary" onclick="app.lock()">Blocca</button>
+                                <button class="btn-secondary" onclick="app.handleLogout()">Esci</button>
+                            </div>
+                        </div>
+
+                        ${this.success ? `<div class="alert alert-success">${this.success}</div>` : ''}
+                        ${this.error ? `<div class="alert alert-error">${this.error}</div>` : ''}
+
+                        <div class="search-container">
+                            <div class="search-wrapper">
+                                <input
+                                    type="text"
+                                    class="search-input"
+                                    id="searchInput"
+                                    placeholder="Cerca..."
+                                    value="${this.searchTerm}"
+                                    onkeyup="app.updateSearch(this.value)"
+                                />
+                            </div>
+                            <button class="btn-add" onclick="app.toggleNewPassword()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19"/>
+                                    <line x1="5" y1="12" x2="19" y2="12"/>
+                                </svg>
+                                Nuova
+                            </button>
+                        </div>
+
+                        ${this.showNewPassword ? this.renderNewPasswordForm() : ''}
+                    </div>
+
+                    <div>
+                        ${filteredPasswords.length === 0 ? 
+                            `<div class="empty-state">
+                                ${this.passwords.length === 0 ? 'Nessuna password salvata. Aggiungi la tua prima password!' : 'Nessun risultato trovato'}
+                            </div>` :
+                            filteredPasswords.map(entry => this.renderPasswordCard(entry)).join('')
+                        }
+                    </div>
+                </div>
+            `;
+        }
+        
+        renderNewPasswordForm() {
+            return `
+                <div class="form-box">
+                    <h3>Aggiungi Password</h3>
+                    <input type="text" id="newSite" placeholder="Sito (es. facebook.com)" value="${this.newEntry.site}" onkeyup="app.updateNewEntry('site', this.value)">
+                    <input type="text" id="newUsername" placeholder="Username o Email" value="${this.newEntry.username}" onkeyup="app.updateNewEntry('username', this.value)">
+                    <input type="password" id="newPassword" placeholder="Password" value="${this.newEntry.password}" onkeyup="app.updateNewEntry('password', this.value)">
+                    <textarea id="newNotes" placeholder="Note (opzionale)" rows="2" onkeyup="app.updateNewEntry('notes', this.value)">${this.newEntry.notes}</textarea>
+                    <div class="form-buttons">
+                        <button class="btn-primary" onclick="app.handleAddPassword()">Salva</button>
+                        <button class="btn-cancel" onclick="app.cancelNewPassword()">Annulla</button>
+                    </div>
+                </div>
+            `;
+        }
+        
+        renderPasswordCard(entry) {
+            const decrypted = this.decrypt(entry.password, this.masterPassword);
+            const isVisible = this.visiblePasswords[entry.id];
+            
+            return `
+                <div class="password-card">
+                    <div class="password-header">
+                        <div class="password-info">
+                            <h3 class="password-site">${entry.site}</h3>
+                            ${entry.username ? `<p class="password-username">${entry.username}</p>` : ''}
+                        </div>
+                        <button class="btn-icon btn-delete" onclick="app.handleDeletePassword('${entry.id}')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"/>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="password-display">
+                        <div class="password-value">
+                            ${isVisible ? (decrypted || 'Errore decifratura') : '••••••••••••'}
+                        </div>
+                        <button class="btn-icon" onclick="app.togglePasswordVisibility('${entry.id}')">
+                            ${isVisible ? 
+                                `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                                    <line x1="1" y1="1" x2="23" y2="23"/>
+                                </svg>` :
+                                `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>`
+                            }
+                        </button>
+                        <button class="btn-icon" onclick="app.copyToClipboard('${entry.password}')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    ${entry.notes ? `<p class="password-notes">${entry.notes}</p>` : ''}
+                </div>
+            `;
+        }
+        
+        async render() {
+            const root = document.getElementById('root');
+            
+            if (this.loading) {
+                root.innerHTML = '<div class="loading">Caricamento...</div>';
+                return;
+            }
+            
+            if (!this.currentUser) {
+                root.innerHTML = this.renderAuthScreen();
+                this.setupAuthListeners();
+                return;
+            }
+            
+            if (!this.masterPassword) {
+                root.innerHTML = await this.renderMasterPasswordScreen();
+                this.setupMasterPasswordListener();
+                return;
+            }
+            
+            root.innerHTML = this.renderMainScreen();
+        }
+        
+        setupAuthListeners() {
+            const emailInput = document.getElementById('emailInput');
+            const passwordInput = document.getElementById('passwordInput');
+            
+            if (emailInput) {
+                emailInput.addEventListener('input', (e) => {
+                    this.loginEmail = e.target.value;
+                });
+            }
+            
+            if (passwordInput) {
+                passwordInput.addEventListener('input', (e) => {
+                    this.loginPassword = e.target.value;
+                });
+                passwordInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.showLogin ? this.handleLogin() : this.handleRegister();
+                    }
+                });
+            }
+        }
+
+        setupMasterPasswordListener() {
+            const input = document.getElementById('masterPasswordInput');
+            if (input) {
+                input.addEventListener('input', (e) => {
+                    this.masterPassword = e.target.value;
+                });
+                input.addEventListener('keypress', async (e) => {
+                    if (e.key === 'Enter') {
+                        const hasMaster = await this.checkMasterPassword();
+                        if (hasMaster) {
+                            await this.verifyAndUnlock();
+                        } else {
+                            await this.setMasterPassword();
+                        }
+                    }
+                });
+            }
+        }
+
+        async verifyAndUnlock() {
+            const isValid = await this.verifyMasterPassword();
+            if (isValid) {
+                this.showSuccess('Sbloccato!');
+                await this.loadPasswords();
+            }
+        }
+        
+        lock() {
+            this.masterPassword = '';
+            this.visiblePasswords = {};
+            this.render();
+        }
+        
+        toggleAuthMode(isLogin) {
+            this.showLogin = isLogin;
+            this.error = '';
+            this.success = '';
+            this.render();
+        }
+        
+        toggleNewPassword() {
+            this.showNewPassword = !this.showNewPassword;
+            this.render();
+        }
+        
+        cancelNewPassword() {
+            this.showNewPassword = false;
+            this.newEntry = { site: '', username: '', password: '', notes: '' };
+            this.render();
+        }
+        
+        updateSearch(value) {
+            this.searchTerm = value;
+            this.render();
+        }
+        
+        updateNewEntry(field, value) {
+            this.newEntry[field] = value;
+        }
+    }
+
+    window.app = new PasswordManager();
+</script>
+```
+
 </body>
 </html>
