@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -10,984 +11,1697 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #EFF6FF 0%, #E0E7FF 100%);
-            min-height: 100vh;
-        }
-        
+
+```
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(135deg, #EFF6FF 0%, #E0E7FF 100%);
+        min-height: 100vh;
+        transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+        background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+        color: #F3F4F6;
+    }
+
+    body.dark-mode .login-box,
+    body.dark-mode .card,
+    body.dark-mode .password-card,
+    body.dark-mode .empty-state {
+        background: #374151;
+        color: #F3F4F6;
+    }
+
+    body.dark-mode .form-box {
+        background: #1F2937;
+    }
+
+    body.dark-mode input,
+    body.dark-mode textarea,
+    body.dark-mode select {
+        background: #1F2937;
+        border-color: #4B5563;
+        color: #F3F4F6;
+    }
+
+    body.dark-mode .password-site,
+    body.dark-mode h1,
+    body.dark-mode h3 {
+        color: #F3F4F6;
+    }
+
+    body.dark-mode .password-value,
+    body.dark-mode .document-preview {
+        background: #1F2937;
+        color: #F3F4F6;
+    }
+
+    body.dark-mode .btn-icon:hover {
+        background: #1F2937;
+    }
+
+    body.dark-mode .tab {
+        color: #9CA3AF;
+    }
+
+    body.dark-mode .tab.active {
+        color: #818CF8;
+    }
+
+    body.dark-mode .note-box {
+        background: #1F2937;
+    }
+    
+    .container {
+        max-width: 56rem;
+        margin: 0 auto;
+        padding: 0.75rem;
+    }
+
+    @media (min-width: 640px) {
         .container {
-            max-width: 56rem;
-            margin: 0 auto;
-            padding: 0.75rem;
+            padding: 1rem;
         }
+    }
+    
+    .login-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+    }
+    
+    .login-box {
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        padding: 2rem;
+        width: 100%;
+        max-width: 28rem;
+    }
+    
+    .lock-icon-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .lock-icon-bg {
+        background: #E0E7FF;
+        padding: 1rem;
+        border-radius: 9999px;
+    }
+    
+    .lock-icon {
+        color: #4F46E5;
+    }
+    
+    h1 {
+        font-size: 1.875rem;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 0.5rem;
+        color: #1F2937;
+    }
+    
+    .subtitle {
+        text-align: center;
+        color: #6B7280;
+        margin-bottom: 2rem;
+    }
+    
+    .alert {
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+        border: 1px solid;
+    }
+    
+    .alert-error {
+        background: #FEF2F2;
+        border-color: #FECACA;
+        color: #991B1B;
+    }
+    
+    .alert-success {
+        background: #F0FDF4;
+        border-color: #BBF7D0;
+        color: #166534;
+    }
+    
+    input[type="text"],
+    input[type="password"],
+    textarea {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 1px solid #D1D5DB;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    input:focus,
+    textarea:focus {
+        outline: none;
+        border-color: #4F46E5;
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    }
+    
+    button {
+        cursor: pointer;
+        border: none;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: all 0.2s;
+        font-size: 1rem;
+    }
+    
+    .btn-primary {
+        width: 100%;
+        background: #4F46E5;
+        color: white;
+        padding: 0.75rem 1rem;
+    }
+    
+    .btn-primary:hover {
+        background: #4338CA;
+    }
+    
+    .btn-secondary {
+        background: #E5E7EB;
+        color: #374151;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.75rem;
+    }
 
-        @media (min-width: 640px) {
-            .container {
-                padding: 1rem;
-            }
-        }
-        
-        .login-container {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-        }
-        
-        .login-box {
-            background: white;
-            border-radius: 1rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            padding: 2rem;
-            width: 100%;
-            max-width: 28rem;
-        }
-        
-        .lock-icon-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        .lock-icon-bg {
-            background: #E0E7FF;
-            padding: 1rem;
-            border-radius: 9999px;
-        }
-        
-        .lock-icon {
-            color: #4F46E5;
-        }
-        
-        h1 {
-            font-size: 1.875rem;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 0.5rem;
-            color: #1F2937;
-        }
-        
-        .subtitle {
-            text-align: center;
-            color: #6B7280;
-            margin-bottom: 2rem;
-        }
-        
-        .alert {
-            padding: 1rem;
-            border-radius: 0.5rem;
-            margin-bottom: 1rem;
-            border: 1px solid;
-        }
-        
-        .alert-error {
-            background: #FEF2F2;
-            border-color: #FECACA;
-            color: #991B1B;
-        }
-        
-        .alert-success {
-            background: #F0FDF4;
-            border-color: #BBF7D0;
-            color: #166534;
-        }
-        
-        input[type="text"],
-        input[type="password"],
-        input[type="email"],
-        textarea,
-        select {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1px solid #D1D5DB;
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            background: white;
-        }
-        
-        input:focus,
-        textarea:focus,
-        select:focus {
-            outline: none;
-            border-color: #4F46E5;
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
-        }
-        
-        button {
-            cursor: pointer;
-            border: none;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            transition: all 0.2s;
-            font-size: 1rem;
-        }
-        
-        button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        
-        .btn-primary {
-            width: 100%;
-            background: #4F46E5;
-            color: white;
-            padding: 0.75rem 1rem;
-        }
-        
-        .btn-primary:hover:not(:disabled) {
-            background: #4338CA;
-        }
-        
+    @media (min-width: 640px) {
         .btn-secondary {
-            background: #E5E7EB;
-            color: #374151;
-            padding: 0.4rem 0.75rem;
-            font-size: 0.75rem;
-        }
-
-        @media (min-width: 640px) {
-            .btn-secondary {
-                padding: 0.5rem 1rem;
-                font-size: 0.875rem;
-            }
-        }
-        
-        .btn-secondary:hover {
-            background: #D1D5DB;
-        }
-        
-        .btn-link {
-            background: transparent;
-            color: #4F46E5;
-            text-decoration: underline;
-            padding: 0.5rem;
-        }
-        
-        .btn-add {
-            background: #4F46E5;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            white-space: nowrap;
-        }
-        
-        .btn-add:hover {
-            background: #4338CA;
-        }
-        
-        .btn-icon {
-            background: transparent;
-            padding: 0.5rem;
-            color: inherit;
-        }
-        
-        .btn-icon:hover {
-            background: #F3F4F6;
-            border-radius: 0.5rem;
-        }
-        
-        .btn-delete {
-            color: #EF4444;
-            padding: 0.5rem;
-        }
-        
-        .btn-delete:hover {
-            color: #DC2626;
-        }
-        
-        .note-box {
-            margin-top: 1.5rem;
-            padding: 1rem;
-            background: #EFF6FF;
-            border-radius: 0.5rem;
-        }
-        
-        .note-box strong {
-            font-weight: 600;
-        }
-        
-        .note-box p {
-            color: #374151;
+            padding: 0.5rem 1rem;
             font-size: 0.875rem;
         }
-        
+    }
+    
+    .btn-secondary:hover {
+        background: #D1D5DB;
+    }
+    
+    .btn-success {
+        background: #10B981;
+        color: white;
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+    
+    .btn-success:hover {
+        background: #059669;
+    }
+    
+    .btn-add {
+        background: #4F46E5;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        white-space: nowrap;
+    }
+    
+    .btn-add:hover {
+        background: #4338CA;
+    }
+    
+    .btn-icon {
+        background: transparent;
+        padding: 0.5rem;
+        color: inherit;
+    }
+    
+    .btn-icon:hover {
+        background: #F3F4F6;
+        border-radius: 0.5rem;
+    }
+    
+    .btn-delete {
+        color: #EF4444;
+        padding: 0.5rem;
+    }
+    
+    .btn-delete:hover {
+        color: #DC2626;
+    }
+    
+    .note-box {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background: #EFF6FF;
+        border-radius: 0.5rem;
+    }
+    
+    .note-box strong {
+        font-weight: 600;
+    }
+    
+    .note-box p {
+        color: #374151;
+        font-size: 0.875rem;
+    }
+    
+    .card {
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    @media (min-width: 640px) {
         .card {
-            background: white;
-            border-radius: 1rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            padding: 1rem;
-            margin-bottom: 1.5rem;
+            padding: 1.5rem;
         }
+    }
+    
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .card-title {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 1.875rem;
+        font-weight: bold;
+        color: #1F2937;
+    }
+    
+    .header-buttons {
+        display: flex;
+        gap: 0.5rem;
+    }
+    
+    .sync-badge {
+        background: #D1FAE5;
+        color: #065F46;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+    }
+    
+    .search-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+    }
 
-        @media (min-width: 640px) {
-            .card {
-                padding: 1.5rem;
-            }
-        }
-        
-        .card-header {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .card-title {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: #1F2937;
-        }
-        
-        .header-buttons {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-            flex-wrap: wrap;
-            width: 100%;
-        }
-        
-        .user-email {
-            color: #6B7280;
-            font-size: 0.75rem;
-            width: 100%;
-            word-break: break-all;
-            margin-bottom: 0.5rem;
-        }
-
-        .sync-badge {
-            background: #D1FAE5;
-            color: #065F46;
-            padding: 0.4rem 0.6rem;
-            border-radius: 0.5rem;
-            font-size: 0.75rem;
-        }
-
-        @media (min-width: 768px) {
-            .card-header {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .card-title {
-                font-size: 1.875rem;
-                gap: 0.75rem;
-            }
-
-            .user-email {
-                width: auto;
-                margin-right: 0.5rem;
-                font-size: 0.875rem;
-                margin-bottom: 0;
-            }
-
-            .header-buttons {
-                width: auto;
-            }
-
-            .sync-badge {
-                font-size: 0.875rem;
-            }
-        }
-        
+    @media (min-width: 640px) {
         .search-container {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
+            flex-direction: row;
         }
+    }
+    
+    .search-wrapper {
+        flex: 1;
+        position: relative;
+    }
+    
+    .search-input {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        margin: 0;
+    }
+    
+    .form-box {
+        background: #EEF2FF;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-box h3 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #1F2937;
+    }
+    
+    .form-buttons {
+        display: flex;
+        gap: 0.75rem;
+    }
+    
+    .form-buttons button {
+        flex: 1;
+        padding: 0.5rem;
+    }
+    
+    .btn-cancel {
+        background: #D1D5DB;
+        color: #374151;
+    }
+    
+    .btn-cancel:hover {
+        background: #9CA3AF;
+    }
+    
+    .password-card {
+        background: white;
+        border-radius: 0.75rem;
+        padding: 1rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1rem;
+        transition: box-shadow 0.2s;
+    }
 
-        @media (min-width: 640px) {
-            .search-container {
-                flex-direction: row;
-            }
-        }
-        
-        .search-wrapper {
-            flex: 1;
-            position: relative;
-        }
-        
-        .search-input {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            margin: 0;
-        }
-        
-        .form-box {
-            background: #EEF2FF;
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-box h3 {
-            font-size: 1.125rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #1F2937;
-        }
-        
-        .form-buttons {
-            display: flex;
-            gap: 0.75rem;
-        }
-        
-        .form-buttons button {
-            flex: 1;
-            padding: 0.5rem;
-        }
-        
-        .btn-cancel {
-            background: #D1D5DB;
-            color: #374151;
-        }
-        
-        .btn-cancel:hover {
-            background: #9CA3AF;
-        }
-        
+    @media (min-width: 640px) {
         .password-card {
-            background: white;
-            border-radius: 0.75rem;
-            padding: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            margin-bottom: 1rem;
-            transition: box-shadow 0.2s;
-        }
-
-        @media (min-width: 640px) {
-            .password-card {
-                padding: 1.5rem;
-            }
-        }
-        
-        .password-card:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        
-        .password-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 0.75rem;
-        }
-        
-        .password-info {
-            flex: 1;
-        }
-        
-        .password-site {
-            font-size: 1.125rem;
-            font-weight: bold;
-            color: #1F2937;
-            word-break: break-word;
-        }
-        
-        .password-username {
-            color: #6B7280;
-            margin-top: 0.25rem;
-            font-size: 0.875rem;
-            word-break: break-word;
-        }
-        
-        .password-display {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.75rem;
-        }
-        
-        .password-value {
-            flex: 1;
-            background: #F3F4F6;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            font-family: monospace;
-            font-size: 0.875rem;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-        
-        .password-notes {
-            font-size: 0.875rem;
-            color: #6B7280;
-            background: #F9FAFB;
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-        }
-        
-        .empty-state {
-            background: white;
-            border-radius: 0.75rem;
-            padding: 2rem;
-            text-align: center;
-            color: #6B7280;
-        }
-        
-        svg {
-            display: inline-block;
-        }
-
-        .tabs {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            overflow-x: auto;
-            padding-bottom: 0.5rem;
-        }
-
-        .tab {
-            padding: 0.5rem 1rem;
-            background: transparent;
-            color: #6B7280;
-            border-bottom: 2px solid transparent;
-            cursor: pointer;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-
-        .tab.active {
-            color: #4F46E5;
-            border-bottom-color: #4F46E5;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 2rem;
-            color: #6B7280;
-        }
-
-        .field-label {
-            font-size: 0.75rem;
-            color: #6B7280;
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .field-value {
-            font-size: 0.875rem;
-            color: #1F2937;
-            margin-bottom: 0.75rem;
-        }
-
-        .document-preview {
-            background: #F9FAFB;
-            border: 1px solid #E5E7EB;
-            border-radius: 0.5rem;
-            padding: 0.75rem;
-            margin-top: 0.5rem;
-            font-size: 0.875rem;
-            color: #6B7280;
-            white-space: pre-wrap;
-            word-break: break-word;
-        }
-
-        /* Nuovi stili per upload file */
-        .file-upload-area {
-            border: 2px dashed #D1D5DB;
-            border-radius: 0.5rem;
             padding: 1.5rem;
-            text-align: center;
-            background: white;
-            margin-bottom: 1rem;
-            cursor: pointer;
-            transition: all 0.2s;
         }
+    }
+    
+    .password-card:hover {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .password-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 0.75rem;
+    }
+    
+    .password-info {
+        flex: 1;
+    }
+    
+    .password-site {
+        font-size: 1.125rem;
+        font-weight: bold;
+        color: #1F2937;
+        word-break: break-word;
+    }
+    
+    .password-username {
+        color: #6B7280;
+        margin-top: 0.25rem;
+        font-size: 0.875rem;
+        word-break: break-word;
+    }
+    
+    .password-display {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .password-value {
+        flex: 1;
+        background: #F3F4F6;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        font-family: monospace;
+        font-size: 0.875rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    .password-notes {
+        font-size: 0.875rem;
+        color: #6B7280;
+        background: #F9FAFB;
+        padding: 0.75rem;
+        border-radius: 0.5rem;
+    }
+    
+    .empty-state {
+        background: white;
+        border-radius: 0.75rem;
+        padding: 2rem;
+        text-align: center;
+        color: #6B7280;
+    }
+    
+    svg {
+        display: inline-block;
+    }
+</style>
+```
 
-        .file-upload-area:hover {
-            border-color: #4F46E5;
-            background: #F9FAFB;
-        }
-
-        .file-upload-area.drag-over {
-            border-color: #4F46E5;
-            background: #EEF2FF;
-        }
-
-        .file-input {
-            display: none;
-        }
-
-        .file-preview {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            margin-top: 0.75rem;
-        }
-
-        .file-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem;
-            background: #F3F4F6;
-            border-radius: 0.5rem;
-            font-size: 0.875rem;
-        }
-
-        .file-item-icon {
-            flex-shrink: 0;
-        }
-
-        .file-item-name {
-            flex: 1;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .file-item-size {
-            color: #6B7280;
-            font-size: 0.75rem;
-        }
-
-        .file-item-remove {
-            background: #EF4444;
-            color: white;
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.25rem;
-            font-size: 0.75rem;
-            cursor: pointer;
-        }
-
-        .file-item-remove:hover {
-            background: #DC2626;
-        }
-
-        .file-attachments {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            margin-top: 0.75rem;
-        }
-
-        .file-attachment {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem;
-            background: #EFF6FF;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .file-attachment:hover {
-            background: #DBEAFE;
-        }
-
-        .file-attachment-icon {
-            flex-shrink: 0;
-            color: #4F46E5;
-        }
-
-        .file-attachment-name {
-            flex: 1;
-            font-size: 0.875rem;
-            color: #1F2937;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .file-attachment-size {
-            color: #6B7280;
-            font-size: 0.75rem;
-        }
-
-        .image-preview {
-            max-width: 100%;
-            max-height: 300px;
-            border-radius: 0.5rem;
-            margin-top: 0.75rem;
-            object-fit: contain;
-        }
-
-        .uploading {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #4F46E5;
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
-        }
-
-        .spinner {
-            width: 16px;
-            height: 16px;
-            border: 2px solid #E5E7EB;
-            border-top-color: #4F46E5;
-            border-radius: 50%;
-            animation: spin 0.6s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-    </style>
 </head>
 <body>
-    <div id="root">
-        <div class="loading">Caricamento...</div>
-    </div>
+    <div id="root"></div>
 
-    <script type="module">
-        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
-        import { getFirestore, collection, doc, setDoc, getDoc, deleteDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+```
+<script>
+    // Storage wrapper che usa localStorage
+    const storage = {
+        async get(key, shared = false) {
+            const value = localStorage.getItem(shared ? `shared_${key}` : key);
+            return value ? { value, key, shared } : null;
+        },
+        async set(key, value, shared = false) {
+            localStorage.setItem(shared ? `shared_${key}` : key, value);
+            return { value, key, shared };
+        },
+        async delete(key, shared = false) {
+            localStorage.removeItem(shared ? `shared_${key}` : key);
+            return { deleted: true, key, shared };
+        }
+    };
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyAv9kaVe238jqo7cqzr8xnsF1rhGXPrm54",
-            authDomain: "password-manager-ce3ce.firebaseapp.com",
-            projectId: "password-manager-ce3ce",
-            storageBucket: "password-manager-ce3ce.firebasestorage.app",
-            messagingSenderId: "585187150117",
-            appId: "1:585187150117:web:1587037bd118685db332cc"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-
-        class PasswordManager {
-            constructor() {
-                this.currentUser = null;
-                this.masterPassword = '';
-                this.passwords = [];
-                this.cards = [];
-                this.notes = [];
-                this.documents = [];
-                this.currentCategory = 'passwords';
-                this.searchTerm = '';
-                this.showNewPassword = false;
-                this.newEntry = { 
-                    type: 'password',
-                    site: '', 
-                    username: '', 
-                    password: '', 
-                    notes: '',
-                    cardNumber: '',
-                    cardHolder: '',
-                    expiryDate: '',
-                    cvv: '',
-                    title: '',
-                    content: '',
-                    files: []
-                };
-                this.visiblePasswords = {};
-                this.error = '';
-                this.success = '';
-                this.loading = true;
-                this.showLogin = true;
-                this.loginEmail = '';
-                this.loginPassword = '';
-                this.uploading = false;
+    // Componente principale
+    class PasswordManager {
+        constructor() {
+            this.isLocked = true;
+            this.masterPassword = '';
+            this.storedMasterHash = '';
+            this.passwords = [];
+            this.searchTerm = '';
+            this.showNewPassword = false;
+            this.newEntry = { site: '', username: '', password: '', notes: '' };
+            this.visiblePasswords = {};
+            this.error = '';
+            this.success = '';
+            this.syncEnabled = false;
+            
+            this.init();
+        }
+        
+        async init() {
+            await this.loadData();
+            this.render();
+        }
+        
+        async loadData() {
+            try {
+                const syncHash = await storage.get('master_hash', true);
+                const syncPasswords = await storage.get('passwords_data', true);
                 
-                this.init();
-            }
-            
-            async init() {
-                onAuthStateChanged(auth, (user) => {
-                    this.currentUser = user;
-                    this.loading = false;
-                    if (user) {
-                        this.loadPasswords();
-                    } else {
-                        this.render();
-                    }
-                });
-            }
-
-            async loadPasswords() {
-                if (!this.currentUser) return;
-
-                try {
-                    const passwordsRef = collection(db, `users/${this.currentUser.uid}/passwords`);
-                    onSnapshot(passwordsRef, (snapshot) => {
-                        this.passwords = [];
-                        snapshot.forEach((doc) => {
-                            this.passwords.push({ id: doc.id, ...doc.data() });
-                        });
-                        this.passwords.sort((a, b) => b.createdAt - a.createdAt);
-                        this.render();
-                    });
-
-                    const cardsRef = collection(db, `users/${this.currentUser.uid}/cards`);
-                    onSnapshot(cardsRef, (snapshot) => {
-                        this.cards = [];
-                        snapshot.forEach((doc) => {
-                            this.cards.push({ id: doc.id, ...doc.data() });
-                        });
-                        this.cards.sort((a, b) => b.createdAt - a.createdAt);
-                        this.render();
-                    });
-
-                    const notesRef = collection(db, `users/${this.currentUser.uid}/notes`);
-                    onSnapshot(notesRef, (snapshot) => {
-                        this.notes = [];
-                        snapshot.forEach((doc) => {
-                            this.notes.push({ id: doc.id, ...doc.data() });
-                        });
-                        this.notes.sort((a, b) => b.createdAt - a.createdAt);
-                        this.render();
-                    });
-
-                    const documentsRef = collection(db, `users/${this.currentUser.uid}/documents`);
-                    onSnapshot(documentsRef, (snapshot) => {
-                        this.documents = [];
-                        snapshot.forEach((doc) => {
-                            this.documents.push({ id: doc.id, ...doc.data() });
-                        });
-                        this.documents.sort((a, b) => b.createdAt - a.createdAt);
-                        this.render();
-                    });
-                } catch (err) {
-                    console.error('Errore caricamento:', err);
-                    this.showError('Errore caricamento dati');
+                if (syncHash) {
+                    this.storedMasterHash = syncHash.value;
+                    this.syncEnabled = true;
                 }
-            }
-            
-            async handleRegister() {
-                if (!this.loginEmail || !this.loginPassword) {
-                    this.showError('Compila email e password');
-                    return;
+                if (syncPasswords) {
+                    this.passwords = JSON.parse(syncPasswords.value);
+                    this.syncEnabled = true;
                 }
+            } catch (err) {
+                console.log('Storage cloud non disponibile');
+            }
+
+            if (!this.syncEnabled) {
+                const hash = localStorage.getItem('master_hash');
+                if (hash) this.storedMasterHash = hash;
                 
-                if (this.loginPassword.length < 6) {
-                    this.showError('La password deve essere almeno 6 caratteri');
-                    return;
-                }
-
-                try {
-                    await createUserWithEmailAndPassword(auth, this.loginEmail, this.loginPassword);
-                    this.showSuccess('Account creato! Ora imposta la password principale');
-                } catch (err) {
-                    if (err.code === 'auth/email-already-in-use') {
-                        this.showError('Email già registrata. Usa il login!');
-                    } else {
-                        this.showError('Errore registrazione: ' + err.message);
-                    }
-                }
+                const passwordsData = localStorage.getItem('passwords_data');
+                if (passwordsData) this.passwords = JSON.parse(passwordsData);
             }
-
-            async handleLogin() {
-                if (!this.loginEmail || !this.loginPassword) {
-                    this.showError('Compila email e password');
-                    return;
+        }
+        
+        async saveData(key, value) {
+            if (this.syncEnabled) {
+                await storage.set(key, value, true);
+            } else {
+                localStorage.setItem(key, value);
+            }
+        }
+        
+        async hashPassword(password) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(password);
+            const hash = await crypto.subtle.digest('SHA-256', data);
+            return Array.from(new Uint8Array(hash))
+                .map(b => b.toString(16).padStart(2, '0'))
+                .join('');
+        }
+        
+        encrypt(text, key) {
+            return btoa(text + '::' + key);
+        }
+        
+        decrypt(encrypted, key) {
+            try {
+                const decoded = atob(encrypted);
+                const parts = decoded.split('::');
+                return parts[1] === key ? parts[0] : null;
+            } catch {
+                return null;
+            }
+        }
+        
+        async enableSync() {
+            try {
+                if (this.storedMasterHash) {
+                    await storage.set('master_hash', this.storedMasterHash, true);
                 }
-
-                try {
-                    await signInWithEmailAndPassword(auth, this.loginEmail, this.loginPassword);
-                    this.showSuccess('Login effettuato!');
-                } catch (err) {
-                    if (err.code === 'auth/invalid-credential') {
-                        this.showError('Email o password errati');
-                    } else {
-                        this.showError('Errore login: ' + err.message);
-                    }
+                if (this.passwords.length > 0) {
+                    await storage.set('passwords_data', JSON.stringify(this.passwords), true);
                 }
+                this.syncEnabled = true;
+                this.showSuccess('Sincronizzazione attivata!');
+            } catch (err) {
+                this.showError('Errore attivazione sincronizzazione');
             }
-
-            async handleLogout() {
-                try {
-                    await signOut(auth);
-                    this.masterPassword = '';
-                    this.passwords = [];
-                    this.cards = [];
-                    this.notes = [];
-                    this.documents = [];
-                    this.showSuccess('Logout effettuato');
-                } catch (err) {
-                    this.showError('Errore logout');
-                }
-            }
-
-            async checkMasterPassword() {
-                if (!this.currentUser) return false;
-                
-                try {
-                    const masterDoc = await getDoc(doc(db, `users/${this.currentUser.uid}/settings/master`));
-                    return masterDoc.exists();
-                } catch (err) {
-                    return false;
-                }
-            }
-
-            async setMasterPassword() {
-                if (!this.masterPassword || this.masterPassword.length < 8) {
-                    this.showError('La password principale deve essere almeno 8 caratteri');
-                    return;
-                }
-
-                try {
-                    const hash = await this.hashPassword(this.masterPassword);
-                    await setDoc(doc(db, `users/${this.currentUser.uid}/settings/master`), {
-                        hash: hash,
-                        createdAt: Date.now()
-                    });
-                    this.showSuccess('Password principale impostata!');
-                    this.render();
-                } catch (err) {
-                    this.showError('Errore salvataggio password principale');
-                }
-            }
-
-            async verifyMasterPassword() {
-                try {
-                    const masterDoc = await getDoc(doc(db, `users/${this.currentUser.uid}/settings/master`));
-                    if (!masterDoc.exists()) {
-                        this.showError('Password principale non trovata');
-                        return false;
-                    }
-
-                    const hash = await this.hashPassword(this.masterPassword);
-                    if (hash === masterDoc.data().hash) {
-                        return true;
-                    } else {
-                        this.showError('Password principale errata!');
-                        return false;
-                    }
-                } catch (err) {
-                    this.showError('Errore verifica password');
-                    return false;
-                }
-            }
-            
-            async hashPassword(password) {
-                const encoder = new TextEncoder();
-                const data = encoder.encode(password);
-                const hash = await crypto.subtle.digest('SHA-256', data);
-                return Array.from(new Uint8Array(hash))
-                    .map(b => b.toString(16).padStart(2, '0'))
-                    .join('');
-            }
-            
-            encrypt(text, key) {
-                return btoa(text + '::' + key);
-            }
-            
-            decrypt(encrypted, key) {
-                try {
-                    const decoded = atob(encrypted);
-                    const parts = decoded.split('::');
-                    return parts[1] === key ? parts[0] : null;
-                } catch {
-                    return null;
-                }
-            }
-
-            async uploadFile(file) {
-                try {
-                    this.uploading = true;
-                    this.render();
-
-                    // Converti il file in Base64
-                    const base64 = await this.fileToBase64(file);
-                    
-                    this.uploading = false;
-                    
-                    return {
-                        name: file.name,
-                        data: base64, // Base64 invece di URL
-                        size: file.size,
-                        type: file.type
-                    };
-                } catch (error) {
-                    this.uploading = false;
-                    console.error('Errore upload:', error);
-                    throw error;
-                }
-            }
-
-            fileToBase64(file) {
-                return new Promise((resolve, reject) => {
-                    const reader = new FileReader();
-                    reader.readAsDataURL(file);
-                    reader.onload = () => resolve(reader.result);
-                    reader.onerror = error => reject(error);
-                });
-            }
-
-            async deleteFile(filePath) {
-                // Non serve con Base64, i file sono nel documento
+        }
+        
+        async handleUnlock() {
+            if (!this.storedMasterHash) {
+                const hash = await this.hashPassword(this.masterPassword);
+                await this.saveData('master_hash', hash);
+                this.storedMasterHash = hash;
+                this.isLocked = false;
+                this.showSuccess('Password principale impostata!');
                 return;
             }
 
-            async handleFileSelect(event) {
-                const files = Array.from(event.target.files);
-                
-                for (const file of files) {
-                    // Limite ridotto per Base64: 800KB (circa 1MB in Base64)
-                    if (file.size > 800 * 1024) {
-                        this.showError(`File ${file.name} troppo grande (max 800KB per Base64)`);
-                        continue;
-                    }
-
-                    try {
-                        const fileData = await this.uploadFile(file);
-                        this.newEntry.files.push(fileData);
-                        this.render();
-                        this.showSuccess(`${file.name} caricato!`);
-                    } catch (error) {
-                        this.showError(`Errore caricamento ${file.name}`);
-                    }
-                }
+            const hash = await this.hashPassword(this.masterPassword);
+            if (hash === this.storedMasterHash) {
+                this.isLocked = false;
+                this.showSuccess('Accesso effettuato!');
+            } else {
+                this.showError('Password errata!');
+            }
+        }
+        
+        async handleAddPassword() {
+            if (!this.newEntry.site || !this.newEntry.password) {
+                this.showError('Compila almeno sito e password');
+                return;
             }
 
-            removeFileFromEntry(index) {
-                this.newEntry.files.splice(index, 1);
+            const encryptedEntry = {
+                id: Date.now(),
+                site: this.newEntry.site,
+                username: this.newEntry.username,
+                password: this.encrypt(this.newEntry.password, this.masterPassword),
+                notes: this.newEntry.notes,
+                createdAt: new Date().toISOString()
+            };
+
+            this.passwords.push(encryptedEntry);
+            await this.saveData('passwords_data', JSON.stringify(this.passwords));
+
+            this.newEntry = { site: '', username: '', password: '', notes: '' };
+            this.showNewPassword = false;
+            this.showSuccess('Password salvata!');
+        }
+        
+        async handleDeletePassword(id) {
+            this.passwords = this.passwords.filter(p => p.id !== id);
+            await this.saveData('passwords_data', JSON.stringify(this.passwords));
+            this.showSuccess('Password eliminata');
+        }
+        
+        copyToClipboard(text) {
+            const decrypted = this.decrypt(text, this.masterPassword);
+            if (decrypted) {
+                navigator.clipboard.writeText(decrypted);
+                this.showSuccess('Copiato!');
+            }
+        }
+        
+        togglePasswordVisibility(id) {
+            this.visiblePasswords[id] = !this.visiblePasswords[id];
+            this.render();
+        }
+        
+        showError(message) {
+            this.error = message;
+            this.render();
+            setTimeout(() => {
+                this.error = '';
+                this.render();
+            }, 3000);
+        }
+        
+        showSuccess(message) {
+            this.success = message;
+            this.render();
+            setTimeout(() => {
+                this.success = '';
+                this.render();
+            }, 2000);
+        }
+        
+        getFilteredPasswords() {
+            return this.passwords.filter(p =>
+                p.site.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+                p.username.toLowerCase().includes(this.searchTerm.toLowerCase())
+            );
+        }
+        
+        renderLockScreen() {
+            return `
+                <div class="login-container">
+                    <div class="login-box">
+                        <div class="lock-icon-container">
+                            <div class="lock-icon-bg">
+                                <svg class="lock-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <h1>Password Manager</h1>
+                        <p class="subtitle">
+                            ${this.showLogin ? 'Accedi al tuo account' : 'Crea un nuovo account'}
+                        </p>
+
+                        <div class="tabs">
+                            <button class="tab ${this.showLogin ? 'active' : ''}" onclick="app.toggleAuthMode(true)">Login</button>
+                            <button class="tab ${!this.showLogin ? 'active' : ''}" onclick="app.toggleAuthMode(false)">Registrati</button>
+                        </div>
+
+                        ${this.error ? `<div class="alert alert-error">${this.error}</div>` : ''}
+                        ${this.success ? `<div class="alert alert-success">${this.success}</div>` : ''}
+
+                        <input
+                            type="email"
+                            id="emailInput"
+                            placeholder="Email"
+                            value="${this.loginEmail}"
+                        />
+
+                        <input
+                            type="password"
+                            id="passwordInput"
+                            placeholder="Password (min 6 caratteri)"
+                        />
+
+                        <button class="btn-primary" onclick="app.${this.showLogin ? 'handleLogin' : 'handleRegister'}()">
+                            ${this.showLogin ? 'Accedi' : 'Crea Account'}
+                        </button>
+
+                        ${!this.showLogin ? `
+                            <div class="note-box">
+                                <p><strong>Nota:</strong> Dopo la registrazione ti verrà chiesto di impostare una password principale per cifrare i tuoi dati.</p>
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        async renderMasterPasswordScreen() {
+            const hasMaster = await this.checkMasterPassword();
+            
+            return `
+                <div class="login-container">
+                    <div class="login-box">
+                        <div class="lock-icon-container">
+                            <div class="lock-icon-bg">
+                                <svg class="lock-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <h1>Password Principale</h1>
+                        <p class="subtitle">
+                            ${hasMaster ? 'Inserisci la password principale per decifrare i tuoi dati' : 'Imposta una password principale per cifrare i tuoi dati'}
+                        </p>
+
+                        ${this.error ? `<div class="alert alert-error">${this.error}</div>` : ''}
+                        ${this.success ? `<div class="alert alert-success">${this.success}</div>` : ''}
+
+                        <input
+                            type="password"
+                            id="masterPasswordInput"
+                            placeholder="Password principale (min 8 caratteri)"
+                        />
+
+                        <button class="btn-primary" onclick="app.${hasMaster ? 'verifyAndUnlock' : 'setMasterPassword'}()">
+                            ${hasMaster ? 'Sblocca' : 'Imposta Password'}
+                        </button>
+
+                        <button class="btn-link" onclick="app.handleLogout()">
+                            Esci dall'account
+                        </button>
+
+                        <div class="note-box">
+                            <p><strong>Importante:</strong> La password principale non può essere recuperata. Assicurati di ricordarla!</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        renderMainScreen() {
+            const filteredItems = this.getFilteredPasswords();
+            const totalCount = this.passwords.length + this.cards.length + this.notes.length;
+            
+            return `
+                <div class="container">
+                    <div class="card">
+                        <div class="card-header">
+                            <h1 class="card-title">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                    <path d="M7 11V7a5 5 0 0 1 9.9-1"/>
+                                </svg>
+                                Il Tuo Vault
+                            </h1>
+                            <div class="header-buttons">
+                                <span class="sync-badge">☁️ Sincronizzato</span>
+                                <span class="user-email">${this.currentUser.email}</span>
+                                <button class="theme-toggle" onclick="app.toggleDarkMode()" title="Cambia tema">
+                                    ${this.darkMode ? 
+                                        `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="5"/>
+                                            <line x1="12" y1="1" x2="12" y2="3"/>
+                                            <line x1="12" y1="21" x2="12" y2="23"/>
+                                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                                            <line x1="1" y1="12" x2="3" y2="12"/>
+                                            <line x1="21" y1="12" x2="23" y2="12"/>
+                                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                                        </svg>` :
+                                        `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                                        </svg>`
+                                    }
+                                </button>
+                                <button class="btn-secondary" onclick="app.lock()">Blocca</button>
+                                <button class="btn-secondary" onclick="app.handleLogout()">Esci</button>
+                            </div>
+                        </div>
+
+                        ${this.success ? `<div class="alert alert-success">${this.success}</div>` : ''}
+                        ${this.error ? `<div class="alert alert-error">${this.error}</div>` : ''}
+
+                        <div class="tabs">
+                            <button class="tab ${this.currentCategory === 'passwords' ? 'active' : ''}" onclick="app.switchCategory('passwords')">
+                                🔑 Password (${this.passwords.length})
+                            </button>
+                            <button class="tab ${this.currentCategory === 'cards' ? 'active' : ''}" onclick="app.switchCategory('cards')">
+                                💳 Carte (${this.cards.length})
+                            </button>
+                            <button class="tab ${this.currentCategory === 'notes' ? 'active' : ''}" onclick="app.switchCategory('notes')">
+                                📝 Note (${this.notes.length})
+                            </button>
+                        </div>
+
+                        <div class="search-container">
+                            <div class="search-wrapper">
+                                <input
+                                    type="text"
+                                    class="search-input"
+                                    id="searchInput"
+                                    placeholder="Cerca..."
+                                    value="${this.searchTerm}"
+                                    onkeyup="app.updateSearch(this.value)"
+                                />
+                            </div>
+                            <button class="btn-add" onclick="app.toggleNewPassword()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19"/>
+                                    <line x1="5" y1="12" x2="19" y2="12"/>
+                                </svg>
+                                Nuovo
+                            </button>
+                        </div>
+
+                        ${this.showNewPassword ? this.renderNewPasswordForm() : ''}
+                    </div>
+
+                    <div>
+                        ${filteredItems.length === 0 ? 
+                            `<div class="empty-state">
+                                ${totalCount === 0 ? 'Nessun elemento salvato. Aggiungi il primo!' : 'Nessun risultato trovato'}
+                            </div>` :
+                            filteredItems.map(entry => {
+                                if (this.currentCategory === 'passwords') return this.renderPasswordCard(entry);
+                                if (this.currentCategory === 'cards') return this.renderCardCard(entry);
+                                if (this.currentCategory === 'notes') return this.renderNoteCard(entry);
+                            }).join('')
+                        }
+                    </div>
+                </div>
+            `;
+        }
+        
+        renderNewPasswordForm() {
+            return `
+                <div class="form-box">
+                    <h3>Aggiungi Nuovo Elemento</h3>
+                    
+                    <select id="entryType" onchange="app.updateNewEntry('type', this.value)">
+                        <option value="password" ${this.newEntry.type === 'password' ? 'selected' : ''}>🔑 Password</option>
+                        <option value="card" ${this.newEntry.type === 'card' ? 'selected' : ''}>💳 Carta di Credito</option>
+                        <option value="note" ${this.newEntry.type === 'note' ? 'selected' : ''}>📝 Nota Privata</option>
+                    </select>
+
+                    ${this.newEntry.type === 'password' ? `
+                        <input type="text" placeholder="Sito (es. facebook.com)" value="${this.newEntry.site}" onkeyup="app.updateNewEntry('site', this.value)">
+                        <input type="text" placeholder="Username o Email" value="${this.newEntry.username}" onkeyup="app.updateNewEntry('username', this.value)">
+                        <input type="password" placeholder="Password" value="${this.newEntry.password}" onkeyup="app.updateNewEntry('password', this.value)">
+                        <textarea placeholder="Note (opzionale)" rows="2" onkeyup="app.updateNewEntry('notes', this.value)">${this.newEntry.notes}</textarea>
+                    ` : ''}
+
+                    ${this.newEntry.type === 'card' ? `
+                        <input type="text" placeholder="Numero Carta" value="${this.newEntry.cardNumber}" onkeyup="app.updateNewEntry('cardNumber', this.value)">
+                        <input type="text" placeholder="Intestatario" value="${this.newEntry.cardHolder}" onkeyup="app.updateNewEntry('cardHolder', this.value)">
+                        <input type="text" placeholder="Scadenza (MM/AA)" value="${this.newEntry.expiryDate}" onkeyup="app.updateNewEntry('expiryDate', this.value)">
+                        <input type="text" placeholder="CVV" value="${this.newEntry.cvv}" onkeyup="app.updateNewEntry('cvv', this.value)">
+                        <textarea placeholder="Note (opzionale)" rows="2" onkeyup="app.updateNewEntry('notes', this.value)">${this.newEntry.notes}</textarea>
+                    ` : ''}
+
+                    ${this.newEntry.type === 'note' ? `
+                        <input type="text" placeholder="Titolo" value="${this.newEntry.title}" onkeyup="app.updateNewEntry('title', this.value)">
+                        <textarea placeholder="Contenuto" rows="6" onkeyup="app.updateNewEntry('content', this.value)">${this.newEntry.content}</textarea>
+                    ` : ''}
+
+                    <div class="form-buttons">
+                        <button class="btn-primary" onclick="app.handleAddPassword()">Salva</button>
+                        <button class="btn-cancel" onclick="app.cancelNewPassword()">Annulla</button>
+                    </div>
+                </div>
+            `;
+        }
+        
+        renderPasswordCard(entry) {
+            const decrypted = this.decrypt(entry.password, this.masterPassword);
+            const isVisible = this.visiblePasswords[entry.id];
+            
+            return `
+                <div class="password-card">
+                    <div class="password-header">
+                        <div class="password-info">
+                            <h3 class="password-site">🔑 ${this.escapeHtml(entry.site)}</h3>
+                            ${entry.username ? `<p class="password-username">${this.escapeHtml(entry.username)}</p>` : ''}
+                        </div>
+                        <button class="btn-icon btn-delete" onclick="app.handleDeletePassword('${entry.id}', 'password')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"/>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="password-display">
+                        <div class="password-value">
+                            ${isVisible ? this.escapeHtml(decrypted || 'Errore decifratura') : '••••••••••••'}
+                        </div>
+                        <button class="btn-icon" onclick="app.togglePasswordVisibility('${entry.id}')">
+                            ${isVisible ? 
+                                `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                                    <line x1="1" y1="1" x2="23" y2="23"/>
+                                </svg>` :
+                                `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>`
+                            }
+                        </button>
+                        <button class="btn-icon" onclick="app.copyToClipboard('${this.escapeHtml(entry.password)}')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    ${entry.notes ? `<p class="password-notes">${this.escapeHtml(entry.notes)}</p>` : ''}
+                </div>
+            `;
+        }
+
+        renderCardCard(entry) {
+            const decryptedNumber = this.decrypt(entry.cardNumber, this.masterPassword);
+            const decryptedCVV = this.decrypt(entry.cvv, this.masterPassword);
+            const isVisible = this.visiblePasswords[entry.id];
+            const maskedNumber = decryptedNumber ? '**** **** **** ' + decryptedNumber.slice(-4) : '****';
+            
+            return `
+                <div class="password-card">
+                    <div class="password-header">
+                        <div class="password-info">
+                            <h3 class="password-site">💳 ${this.escapeHtml(entry.cardHolder)}</h3>
+                            <p class="password-username">${isVisible ? this.escapeHtml(decryptedNumber) : maskedNumber}</p>
+                        </div>
+                        <button class="btn-icon btn-delete" onclick="app.handleDeletePassword('${entry.id}', 'card')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"/>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="field-label">Scadenza</div>
+                    <div class="field-value">${this.escapeHtml(entry.expiryDate || 'N/A')}</div>
+
+                    <div class="password-display">
+                        <div class="password-value">
+                            CVV: ${isVisible ? this.escapeHtml(decryptedCVV || '***') : '•••'}
+                        </div>
+                        <button class="btn-icon" onclick="app.togglePasswordVisibility('${entry.id}')">
+                            ${isVisible ? 
+                                `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                                    <line x1="1" y1="1" x2="23" y2="23"/>
+                                </svg>` :
+                                `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>`
+                            }
+                        </button>
+                        <button class="btn-icon" onclick="app.copyToClipboard('${this.escapeHtml(entry.cardNumber)}')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    ${entry.notes ? `<p class="password-notes">${this.escapeHtml(entry.notes)}</p>` : ''}
+                </div>
+            `;
+        }
+
+        renderNoteCard(entry) {
+            const decryptedContent = this.decrypt(entry.content, this.masterPassword);
+            const isVisible = this.visiblePasswords[entry.id];
+            
+            return `
+                <div class="password-card">
+                    <div class="password-header">
+                        <div class="password-info">
+                            <h3 class="password-site">📝 ${this.escapeHtml(entry.title)}</h3>
+                        </div>
+                        <button class="btn-icon btn-delete" onclick="app.handleDeletePassword('${entry.id}', 'note')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"/>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="document-preview">
+                        ${isVisible ? this.escapeHtml(decryptedContent || 'Errore decifratura') : 'Clicca per visualizzare...'}
+                    </div>
+
+                    <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem;">
+                        <button class="btn-icon" onclick="app.togglePasswordVisibility('${entry.id}')">
+                            ${isVisible ? 
+                                `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                                    <line x1="1" y1="1" x2="23" y2="23"/>
+                                </svg>` :
+                                `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>`
+                            }
+                        </button>
+                        ${isVisible ? `
+                            <button class="btn-icon" onclick="app.copyToClipboard('${this.escapeHtml(entry.content)}')">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                </svg>
+                            </button>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        async render() {
+            const root = document.getElementById('root');
+            
+            if (this.loading) {
+                root.innerHTML = '<div class="loading">Caricamento...</div>';
+                return;
+            }
+            
+            if (!this.currentUser) {
+                root.innerHTML = this.renderAuthScreen();
+                this.setupAuthListeners();
+                return;
+            }
+            
+            if (!this.masterPassword) {
+                root.innerHTML = await this.renderMasterPasswordScreen();
+                this.setupMasterPasswordListener();
+                return;
+            }
+            
+            root.innerHTML = this.renderMainScreen();
+        }
+        
+        setupAuthListeners() {
+            const emailInput = document.getElementById('emailInput');
+            const passwordInput = document.getElementById('passwordInput');
+            
+            if (emailInput) {
+                emailInput.addEventListener('input', (e) => {
+                    this.loginEmail = e.target.value;
+                });
+            }
+            
+            if (passwordInput) {
+                passwordInput.addEventListener('input', (e) => {
+                    this.loginPassword = e.target.value;
+                });
+                passwordInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.showLogin ? this.handleLogin() : this.handleRegister();
+                    }
+                });
+            }
+        }
+
+        setupMasterPasswordListener() {
+            const input = document.getElementById('masterPasswordInput');
+            if (input) {
+                input.addEventListener('input', (e) => {
+                    this.masterPassword = e.target.value;
+                });
+                input.addEventListener('keypress', async (e) => {
+                    if (e.key === 'Enter') {
+                        const hasMaster = await this.checkMasterPassword();
+                        if (hasMaster) {
+                            await this.verifyAndUnlock();
+                        } else {
+                            await this.setMasterPassword();
+                        }
+                    }
+                });
+            }
+        }
+
+        async verifyAndUnlock() {
+            const isValid = await this.verifyMasterPassword();
+            if (isValid) {
+                this.showSuccess('Sbloccato!');
+                await this.loadPasswords();
+            }
+        }
+        
+        lock() {
+            this.masterPassword = '';
+            this.visiblePasswords = {};
+            this.render();
+        }
+        
+        toggleAuthMode(isLogin) {
+            this.showLogin = isLogin;
+            this.error = '';
+            this.success = '';
+            this.render();
+        }
+        
+        toggleNewPassword() {
+            this.showNewPassword = !this.showNewPassword;
+            this.render();
+        }
+        
+        cancelNewPassword() {
+            this.showNewPassword = false;
+            this.newEntry = { 
+                type: 'password',
+                site: '', username: '', password: '', notes: '',
+                cardNumber: '', cardHolder: '', expiryDate: '', cvv: '',
+                title: '', content: ''
+            };
+            this.render();
+        }
+        
+        updateSearch(value) {
+            this.searchTerm = value;
+            this.render();
+        }
+        
+        updateNewEntry(field, value) {
+            this.newEntry[field] = value;
+            if (field === 'type') {
                 this.render();
             }
+        }
 
-            async handleAddPassword() {
-                if (!this.masterPassword) {
-                    this.showError('Password principale non verificata');
-                    return;
+        switchCategory(category) {
+            this.currentCategory = category;
+            this.searchTerm = '';
+            this.render();
+        }
+    }
+
+    window.app = new PasswordManager();
+</script>
+```
+
+</body>
+</html>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                    </svg>
+                                </div>
+                            </div>
+
+```
+                        <h1>Password Manager</h1>
+                        <p class="subtitle">
+                            ${this.storedMasterHash ? 'Inserisci la password principale' : 'Imposta una password principale'}
+                        </p>
+
+                        ${this.error ? `<div class="alert alert-error">${this.error}</div>` : ''}
+                        ${this.success ? `<div class="alert alert-success">${this.success}</div>` : ''}
+
+                        <input
+                            type="password"
+                            id="masterPasswordInput"
+                            placeholder="Password principale"
+                        />
+
+                        <button class="btn-primary" onclick="app.handleUnlock()">
+                            ${this.storedMasterHash ? 'Sblocca' : 'Crea Password'}
+                        </button>
+
+                        <div class="note-box">
+                            <p><strong>Nota:</strong> La password principale non può essere recuperata. Assicurati di ricordarla!</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        renderMainScreen() {
+            const filteredPasswords = this.getFilteredPasswords();
+            
+            return `
+                <div class="container">
+                    <div class="card">
+                        <div class="card-header">
+                            <h1 class="card-title">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                    <path d="M7 11V7a5 5 0 0 1 9.9-1"/>
+                                </svg>
+                                Le Tue Password
+                            </h1>
+                            <div class="header-buttons">
+                                ${!this.syncEnabled ? 
+                                    `<button class="btn-success" onclick="app.enableSync()">Attiva Sync</button>` :
+                                    `<span class="sync-badge">☁️ Sincronizzato</span>`
+                                }
+                                <button class="btn-secondary" onclick="app.lock()">Blocca</button>
+                            </div>
+                        </div>
+
+                        ${this.success ? `<div class="alert alert-success">${this.success}</div>` : ''}
+                        ${this.error ? `<div class="alert alert-error">${this.error}</div>` : ''}
+
+                        <div class="search-container">
+                            <div class="search-wrapper">
+                                <input
+                                    type="text"
+                                    class="search-input"
+                                    id="searchInput"
+                                    placeholder="Cerca..."
+                                    value="${this.searchTerm}"
+                                    onkeyup="app.updateSearch(this.value)"
+                                />
+                            </div>
+                            <button class="btn-add" onclick="app.toggleNewPassword()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19"/>
+                                    <line x1="5" y1="12" x2="19" y2="12"/>
+                                </svg>
+                                Nuova
+                            </button>
+                        </div>
+
+                        ${this.showNewPassword ? this.renderNewPasswordForm() : ''}
+                    </div>
+
+                    <div>
+                        ${filteredPasswords.length === 0 ? 
+                            `<div class="empty-state">
+                                ${this.passwords.length === 0 ? 'Nessuna password salvata. Aggiungi la tua prima password!' : 'Nessun risultato trovato'}
+                            </div>` :
+                            filteredPasswords.map(entry => this.renderPasswordCard(entry)).join('')
+                        }
+                    </div>
+                </div>
+            `;
+        }
+        
+        renderNewPasswordForm() {
+            return `
+                <div class="form-box">
+                    <h3>Aggiungi Nuovo Elemento</h3>
+                    
+                    <select id="entryType" onchange="app.updateNewEntry('type', this.value)">
+                        <option value="password" ${this.newEntry.type === 'password' ? 'selected' : ''}>🔑 Password</option>
+                        <option value="card" ${this.newEntry.type === 'card' ? 'selected' : ''}>💳 Carta di Credito</option>
+                        <option value="note" ${this.newEntry.type === 'note' ? 'selected' : ''}>📝 Nota Privata</option>
+                    </select>
+
+                    ${this.newEntry.type === 'password' ? `
+                        <input type="text" placeholder="Sito (es. facebook.com)" value="${this.newEntry.site}" onkeyup="app.updateNewEntry('site', this.value)">
+                        <input type="text" placeholder="Username o Email" value="${this.newEntry.username}" onkeyup="app.updateNewEntry('username', this.value)">
+                        <input type="password" placeholder="Password" value="${this.newEntry.password}" onkeyup="app.updateNewEntry('password', this.value)">
+                        <textarea placeholder="Note (opzionale)" rows="2" onkeyup="app.updateNewEntry('notes', this.value)">${this.newEntry.notes}</textarea>
+                    ` : ''}
+
+                    ${this.newEntry.type === 'card' ? `
+                        <input type="text" placeholder="Numero Carta" value="${this.newEntry.cardNumber}" onkeyup="app.updateNewEntry('cardNumber', this.value)">
+                        <input type="text" placeholder="Intestatario" value="${this.newEntry.cardHolder}" onkeyup="app.updateNewEntry('cardHolder', this.value)">
+                        <input type="text" placeholder="Scadenza (MM/AA)" value="${this.newEntry.expiryDate}" onkeyup="app.updateNewEntry('expiryDate', this.value)">
+                        <input type="text" placeholder="CVV" value="${this.newEntry.cvv}" onkeyup="app.updateNewEntry('cvv', this.value)">
+                        <textarea placeholder="Note (opzionale)" rows="2" onkeyup="app.updateNewEntry('notes', this.value)">${this.newEntry.notes}</textarea>
+                    ` : ''}
+
+                    ${this.newEntry.type === 'note' ? `
+                        <input type="text" placeholder="Titolo" value="${this.newEntry.title}" onkeyup="app.updateNewEntry('title', this.value)">
+                        <textarea placeholder="Contenuto" rows="6" onkeyup="app.updateNewEntry('content', this.value)">${this.newEntry.content}</textarea>
+                    ` : ''}
+
+                    <div class="form-buttons">
+                        <button class="btn-primary" onclick="app.handleAddPassword()">Salva</button>
+                        <button class="btn-cancel" onclick="app.cancelNewPassword()">Annulla</button>
+                    </div>
+                </div>
+            `;
+        }
+        
+        renderPasswordCard(entry) {
+            const decrypted = this.decrypt(entry.password, this.masterPassword);
+            const isVisible = this.visiblePasswords[entry.id];
+            
+            return `
+                <div class="password-card">
+                    <div class="password-header">
+                        <div class="password-info">
+                            <h3 class="password-site">${entry.site}</h3>
+                            ${entry.username ? `<p class="password-username">${entry.username}</p>` : ''}
+                        </div>
+                        <button class="btn-icon btn-delete" onclick="app.handleDeletePassword('${entry.id}')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"/>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="password-display">
+                        <div class="password-value">
+                            ${isVisible ? (decrypted || 'Errore decifratura') : '••••••••••••'}
+                        </div>
+                        <button class="btn-icon" onclick="app.togglePasswordVisibility('${entry.id}')">
+                            ${isVisible ? 
+                                `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                                    <line x1="1" y1="1" x2="23" y2="23"/>
+                                </svg>` :
+                                `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>`
+                            }
+                        </button>
+                        <button class="btn-icon" onclick="app.copyToClipboard('${entry.password}')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    ${entry.notes ? `<p class="password-notes">${entry.notes}</p>` : ''}
+                </div>
+            `;
+        }
+        
+        async render() {
+            const root = document.getElementById('root');
+            
+            if (this.loading) {
+                root.innerHTML = '<div class="loading">Caricamento...</div>';
+                return;
+            }
+            
+            if (!this.currentUser) {
+                root.innerHTML = this.renderAuthScreen();
+                this.setupAuthListeners();
+                return;
+            }
+            
+            if (!this.masterPassword) {
+                root.innerHTML = await this.renderMasterPasswordScreen();
+                this.setupMasterPasswordListener();
+                return;
+            }
+            
+            root.innerHTML = this.renderMainScreen();
+        }
+        
+        setupAuthListeners() {
+            const emailInput = document.getElementById('emailInput');
+            const passwordInput = document.getElementById('passwordInput');
+            
+            if (emailInput) {
+                emailInput.addEventListener('input', (e) => {
+                    this.loginEmail = e.target.value;
+                });
+            }
+            
+            if (passwordInput) {
+                passwordInput.addEventListener('input', (e) => {
+                    this.loginPassword = e.target.value;
+                });
+                passwordInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.showLogin ? this.handleLogin() : this.handleRegister();
+                    }
+                });
+            }
+        }
+
+        setupMasterPasswordListener() {
+            const input = document.getElementById('masterPasswordInput');
+            if (input) {
+                input.addEventListener('input', (e) => {
+                    this.masterPassword = e.target.value;
+                });
+                input.addEventListener('keypress', async (e) => {
+                    if (e.key === 'Enter') {
+                        const hasMaster = await this.checkMasterPassword();
+                        if (hasMaster) {
+                            await this.verifyAndUnlock();
+                        } else {
+                            await this.setMasterPassword();
+                        }
+                    }
+                });
+            }
+        }
+
+        async verifyAndUnlock() {
+            const isValid = await this.verifyMasterPassword();
+            if (isValid) {
+                this.showSuccess('Sbloccato!');
+                await this.loadPasswords();
+            }
+        }
+        
+        lock() {
+            this.masterPassword = '';
+            this.visiblePasswords = {};
+            this.render();
+        }
+        
+        toggleAuthMode(isLogin) {
+            this.showLogin = isLogin;
+            this.error = '';
+            this.success = '';
+            this.render();
+        }
+        
+        toggleNewPassword() {
+            this.showNewPassword = !this.showNewPassword;
+            this.render();
+        }
+        
+        cancelNewPassword() {
+            this.showNewPassword = false;
+            this.newEntry = { 
+                type: 'password',
+                site: '', username: '', password: '', notes: '',
+                cardNumber: '', cardHolder: '', expiryDate: '', cvv: '',
+                title: '', content: ''
+            };
+            this.render();
+        }
+        
+        updateSearch(value) {
+            this.searchTerm = value;
+            this.render();
+        }
+        
+        updateNewEntry(field, value) {
+            this.newEntry[field] = value;
+            if (field === 'type') {
+                this.render();
+            }
+        }
+
+        switchCategory(category) {
+            this.currentCategory = category;
+            this.searchTerm = '';
+            this.render();
+        }
+    }
+
+    window.app = new PasswordManager();
+</script>
+```
+
+</body>
+</html>.updateNewEntry('username', this.value)">
+                        <input type="password" id="newPassword" placeholder="Password" value="${this.newEntry.password}" onkeyup="app.updateNewEntry('password', this.value)">
+                        <textarea id="newNotes" placeholder="Note (opzionale)" rows="2" onkeyup="app.updateNewEntry('notes', this.value)">${this.newEntry.notes}</textarea>
+                        <div class="form-buttons">
+                            <button class="btn-primary" onclick="app.handleAddPassword()">Salva</button>
+                            <button class="btn-cancel" onclick="app.cancelNewPassword()">Annulla</button>
+                        </div>
+                    </div>
+                `;
+            }
+
+```
+        renderPasswordCard(entry) {
+            const decryptedPassword = this.decrypt(entry.password, this.masterPassword);
+            const isVisible = this.visiblePasswords[entry.id];
+            
+            return `
+                <div class="password-card">
+                    <div class="password-header">
+                        <div class="password-info">
+                            <h3 class="password-site">${entry.site}</h3>
+                            ${entry.username ? `<p class="password-username">${entry.username}</p>` : ''}
+                        </div>
+                        <button class="btn-icon btn-delete" onclick="app.handleDeletePassword(${entry.id})">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"/>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="password-display">
+                        <div class="password-value">
+                            ${isVisible ? decryptedPassword : '••••••••••••'}
+                        </div>
+                        <button class="btn-icon" onclick="app.togglePasswordVisibility(${entry.id})">
+                            ${isVisible ? 
+                                `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                                    <line x1="1" y1="1" x2="23" y2="23"/>
+                                </svg>` :
+                                `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>`
+                            }
+                        </button>
+                        <button class="btn-icon" onclick="app.copyToClipboard('${entry.password}')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    ${entry.notes ? `<p class="password-notes">${entry.notes}</p>` : ''}
+                </div>
+            `;
+        }
+        
+        async render() {
+            const root = document.getElementById('root');
+            
+            if (this.loading) {
+                root.innerHTML = '<div class="loading">Caricamento...</div>';
+                return;
+            }
+            
+            if (!this.currentUser) {
+                root.innerHTML = this.renderAuthScreen();
+                this.setupAuthListeners();
+                return;
+            }
+            
+            if (!this.masterPassword) {
+                root.innerHTML = await this.renderMasterPasswordScreen();
+                this.setupMasterPasswordListener();
+                return;
+            }
+            
+            root.innerHTML = this.renderMainScreen();
+        }
+        
+        setupAuthListeners() {
+            const emailInput = document.getElementById('emailInput');
+            const passwordInput = document.getElementById('passwordInput');
+            
+            if (emailInput) {
+                emailInput.addEventListener('input', (e) => {
+                    this.loginEmail = e.target.value;
+                });
+            }
+            
+            if (passwordInput) {
+                passwordInput.addEventListener('input', (e) => {
+                    this.loginPassword = e.target.value;
+                });
+                passwordInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.showLogin ? this.handleLogin() : this.handleRegister();
+                    }
+                });
+            }
+        }
+
+        setupMasterPasswordListener() {
+            const input = document.getElementById('masterPasswordInput');
+            if (input) {
+                input.addEventListener('input', (e) => {
+                    this.masterPassword = e.target.value;
+                });
+                input.addEventListener('keypress', async (e) => {
+                    if (e.key === 'Enter') {
+                        const hasMaster = await this.checkMasterPassword();
+                        if (hasMaster) {
+                            await this.verifyAndUnlock();
+                        } else {
+                            await this.setMasterPassword();
+                        }
+                    }
+                });
+            }
+        }
+
+        async verifyAndUnlock() {
+            const isValid = await this.verifyMasterPassword();
+            if (isValid) {
+                this.showSuccess('Sbloccato!');
+                await this.loadPasswords();
+            }
+        }
+        
+        lock() {
+            this.masterPassword = '';
+            this.visiblePasswords = {};
+            this.render();
+        }
+        
+        toggleAuthMode(isLogin) {
+            this.showLogin = isLogin;
+            this.error = '';
+            this.success = '';
+            this.render();
+        }
+        
+        toggleNewPassword() {
+            this.showNewPassword = !this.showNewPassword;
+            this.render();
+        }
+        
+        cancelNewPassword() {
+            this.showNewPassword = false;
+            this.newEntry = { site: '', username: '', password: '', notes: '' };
+            this.render();
+        }
+        
+        updateSearch(value) {
+            this.searchTerm = value;
+            this.render();
+        }
+        
+        updateNewEntry(field, value) {
+            this.newEntry[field] = value;
+        }
+    }
+
+    // Avvia l'applicazione
+    window.app = new PasswordManager();
+</script>
+```
+
+</body>
+</html>
+            }
+
+```
+        render() {
+            const root = document.getElementById('root');
+            root.innerHTML = this.isLocked ? this.renderLockScreen() : this.renderMainScreen();
+            
+            if (this.isLocked) {
+                const input = document.getElementById('masterPasswordInput');
+                if (input) {
+                    input.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter') {
+                            this.masterPassword = input.value;
+                            this.handleUnlock();
+                        }
+                    });
+                    input.addEventListener('input', (e) => {
+                        this.masterPassword = e.target.value;
+                    });
                 }
+            }
+        }
+        
+        lock() {
+            this.isLocked = true;
+            this.masterPassword = '';
+            this.render();
+        }
+        
+        toggleNewPassword() {
+            this.showNewPassword = !this.showNewPassword;
+            this.render();
+        }
+        
+        cancelNewPassword() {
+            this.showNewPassword = false;
+            this.newEntry = { site: '', username: '', password: '', notes: '' };
+            this.render();
+        }
+        
+        updateSearch(value) {
+            this.searchTerm = value;
+            this.render();
+        }
+        
+        updateNewEntry(field, value) {
+            this.newEntry[field] = value;
+        }
+    }
 
-                try {
-                    let encryptedEntry = { 
-                        createdAt: Date.now(),
-                        files: this.newEntry.files || []
-                    };
-                    let collectionName = '';
+    // Avvia l'applicazione
+    const app = new PasswordManager();
+</script>
+```
 
-                    if (this.newEntry.type === 'password') {
-                        if (!this.newEntry.site || !this.newEntry.password) {
-                            this.showError('Compila almeno sito e password');
-                            return;
-                        }
-                        encryptedEntry = {
-                            ...encryptedEntry,
-                            site: this.newEntry.site,
-                            username: this.newEntry.username,
-                            password: this.encrypt(this.newEntry.password, this.masterPassword),
-                            notes: this.newEntry.notes
-                        };
-                        collectionName = 'passwords';
-                    } else if (this.newEntry.type === 'card') {
-                        if (!this.newEntry.cardNumber || !this.newEntry.cardHolder) {
-                            this.showError('Compila almeno numero carta e intestatario');
-                            return;
-                        }
-                        encryptedEntry = {
-                            ...encryptedEntry,
-                            cardNumber: this.encrypt(this.newEntry.cardNumber, this.masterPassword),
-                            cardHolder: this.newEntry.cardHolder,
-                            expiryDate: this.newEntry.expiryDate,
-                            cvv: this.encrypt(this.newEntry.cvv, this.masterPassword),
-                            notes: this.newEntry.notes
-                        };
+</body>
+</html>
